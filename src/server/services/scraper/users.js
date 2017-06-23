@@ -65,6 +65,13 @@ function storeUsers(users) {
         name: user.name,
         url: user.url,
         avatarUrl: user.avatarUrl,
+        company: user.company,
+        location: user.location,
+        followers: user.followers.total,
+        following: user.following.total,
+        sources: user.sources.total,
+        forked: user.forked.total,
+        collaborations: user.collaborations.total,
         createdAt: new Date(user.createdAt)
       }))
     )

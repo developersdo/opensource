@@ -6,7 +6,14 @@ module.exports = {
       name: { type: Sequelize.STRING },
       url: { type: Sequelize.STRING },
       avatarUrl: { type: Sequelize.STRING },
-      createdAt: { type: Sequelize.DATE }
+      company: { type: Sequelize.STRING },
+      location: { type: Sequelize.STRING },
+      createdAt: { type: Sequelize.DATE },
+      followers: { type: Sequelize.INTEGER },
+      following: { type: Sequelize.INTEGER },
+      sources: { type: Sequelize.INTEGER },
+      forked: { type: Sequelize.INTEGER },
+      collaborations: { type: Sequelize.INTEGER }
     })
   },
 

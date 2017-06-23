@@ -8,7 +8,14 @@ module.exports = {
     name: Sequelize.STRING(100),
     url: Sequelize.STRING(200),
     avatarUrl: Sequelize.STRING(200),
-    createdAt: Sequelize.DATE
+    company: Sequelize.STRING(100),
+    location: Sequelize.STRING(100),
+    createdAt: Sequelize.DATE,
+    followers: Sequelize.INTEGER,
+    following: Sequelize.INTEGER,
+    sources: Sequelize.INTEGER,
+    forked: Sequelize.INTEGER,
+    collaborations: Sequelize.INTEGER
   }, {
     timestamps: false
   })

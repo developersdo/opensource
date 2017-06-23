@@ -11,12 +11,28 @@ module.exports = (client) => {
         nodes {
           __typename
           ... on User {
-            id: databaseId
             login
             name
-            url
+            url: websiteUrl
             avatarUrl
+            company
+            location
             createdAt
+            followers {
+              total: totalCount
+            }
+            following {
+              total: totalCount
+            }
+            sources: repositories(isFork: false, privacy: PUBLIC, affiliations: OWNER) {
+              total: totalCount
+            }
+            forked: repositories(isFork: true, privacy: PUBLIC, affiliations: OWNER) {
+              total: totalCount
+            }
+            collaborations: repositories(privacy: PUBLIC, affiliations: COLLABORATOR) {
+              total: totalCount
+            }
           }
         }
         pageInfo {
@@ -32,6 +48,11 @@ module.exports = (client) => {
   }
 
   return {
+
+    /**
+     * Get a list of users from GitHub API.
+     * @param {Object} params The parameters.
+     */
     get(params = {}) {
       print.trace('get: Get users with params:', params)
 
