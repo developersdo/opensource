@@ -1,0 +1,22 @@
+{
+  "name": "opensource",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Rubens Mariuzzo <rubens@mariuzzo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-client": "^1.4.2",
+    "chalk-printer": "^1.0.1",
+    "config": "^1.26.1",
+    "graphql-tag": "^2.4.0",
+    "isomorphic-fetch": "^2.2.1",
+    "sequelize": "^4.2.0",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^2.7.0"
+  },
+  "scripts": {
+    "sequelize": "sequelize"
+  }
+}
