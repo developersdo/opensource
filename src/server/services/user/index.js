@@ -1,68 +1,42 @@
-const gql = require('graphql-tag')
 const print = require('chalk-printer')
 
-module.exports = (client) => {
+const { User } = require('../../models')
 
-  const queries = {
-    searchUsers: gql`
-    query searchUsers($query: String!, $after: String) {
-      search(type: USER, query: $query, first: 100, after: $after) {
-        userCount
-        nodes {
-          __typename
-          ... on User {
-            login
-            name
-            url: websiteUrl
-            avatarUrl
-            company
-            location
-            createdAt
-            followers {
-              total: totalCount
-            }
-            following {
-              total: totalCount
-            }
-            sources: repositories(isFork: false, privacy: PUBLIC, affiliations: OWNER) {
-              total: totalCount
-            }
-            forked: repositories(isFork: true, privacy: PUBLIC, affiliations: OWNER) {
-              total: totalCount
-            }
-            collaborations: repositories(privacy: PUBLIC, affiliations: COLLABORATOR) {
-              total: totalCount
-            }
-          }
-        }
-        pageInfo {
-          hasNextPage
-          endCursor
-        }
+module.exports = {
+  /**
+   * Create one or more users. Any existing users identified by their login will be skipped.
+   *
+   * @param {Array} users The array of users.
+   * @return {Promise} A promise.
+   */
+  createUsers(users = []) {
+    print.trace('Create users', users.length)
+
+    return User.findAll({
+      attributes: ['login'],
+      where: {
+        login: { $in: users.map(u => u.login).filter(u => u) }
       }
-      rateLimit {
-        limit
-        remaining
-      }
-    }`
-  }
+    }).then((results) => {
+      const existingLogins = results.map(r => r.login)
+      const newUsers = users.filter(u => existingLogins.indexOf(u.login) === -1)
 
-  return {
-
-    /**
-     * Get a list of users from GitHub API.
-     * @param {Object} params The parameters.
-     */
-    get(params = {}) {
-      print.trace('get: Get users with params:', params)
-
-      return client.query({
-        query: queries.searchUsers,
-        variables: {
-          query: params.query,
-          after: params.after || null
-        }
-      })
-    }
+      return User.bulkCreate(
+        newUsers.map((user) => ({
+          login: user.login,
+          name: user.name,
+          url: user.url,
+          avatarUrl: user.avatarUrl,
+          company: user.company,
+          location: user.location,
+          followers: user.followers.total,
+          following: user.following.total,
+          sources: user.sources.total,
+          forked: user.forked.total,
+          collaborations: user.collaborations.total,
+          createdAt: new Date(user.createdAt)
+        }))
+      )
+    })
   }
 }
