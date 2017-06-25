@@ -6,6 +6,7 @@
     }
   },
   "users": {
-    "locations": ["dominican", "santo domingo"]
+    "locations": ["dominican", "santo domingo"],
+    "include": ["psanders", "claudiosanchez", "enmanuel97", "smartdev", "davidtavarez"]
   }
 }
