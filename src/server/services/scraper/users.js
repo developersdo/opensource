@@ -2,6 +2,7 @@ const print = require('chalk-printer')
 const config = require('config')
 
 const srv = require('..')
+const utils = require('../../utils')
 
 module.exports = {
 
@@ -11,11 +12,18 @@ module.exports = {
    * @return {Promise} A promise.
    */
   async scrape() {
-    print.trace('Scrape data...')
+    print.trace('Scrape users data...')
 
     // Scrape users data for each defined locations.
     for (const location of config.get('users.locations')) {
-      await this.scrapeUsersInLocation(location)
+      await this.scrapeUsers(`location:"${location}"`)
+    }
+
+    // Scrape users data for explicit defined username to include.
+    const loginsChunks = utils.chunk(config.get('users.include'), 50)
+    for (const loginsChunk of loginsChunks) {
+      const query = loginsChunk.map(l => `user:${loginsChunk}`).join(' ')
+      await this.scrapeUsers(query)
     }
   },
 
@@ -27,20 +35,20 @@ module.exports = {
    *
    * @return {Promise} A promise.
    */
-  async scrapeUsersInLocation(location, after = null) {
-    print.trace('Scrape users in location', { location, after })
+  async scrapeUsers(query, after = null) {
+    print.trace('Scrape users')
 
-    return await srv.github.searchUsers({ after, query: `location:"${location}"` })
+    return await srv.github.searchUsers(query, after)
       .then((response) => {
 
         // Store users.
-        const users = response.data.search.nodes.filter((node) => node.__typename === 'User')
+        const users = response.data.search.nodes
         return srv.user.createUsers(users)
           .then(() => {
 
             // If a next page is available then let's fetch it.
             const { hasNextPage, endCursor } = response.data.search.pageInfo
-            return hasNextPage ? this.scrapeUsersInLocation(location, endCursor) : Promise.resolve()
+            return hasNextPage ? this.scrapeUsers(query, endCursor) : Promise.resolve()
           })
       })
   }

@@ -1,5 +1,5 @@
-const config = require('config')
 const fetch = require('isomorphic-fetch')
+const config = require('config')
 const { ApolloClient, createNetworkInterface, IntrospectionFragmentMatcher } = require('apollo-client')
 
 const networkInterface = createNetworkInterface({

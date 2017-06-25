@@ -1,6 +1,10 @@
 const gql = require('graphql-tag')
 
 module.exports = {
+
+  /**
+   * Graphql query to search users on GitHub API.
+   */
   searchUsers: gql`
     query searchUsers($query: String!, $after: String) {
       search(type: USER, query: $query, first: 100, after: $after) {
@@ -29,21 +33,6 @@ module.exports = {
             }
             sources: repositories(isFork: false, privacy: PUBLIC, affiliations: OWNER, first: 100) {
               total: totalCount
-              nodes {
-                name
-                description
-                homepageUrl
-                url
-                languages(first:50) {
-                  totalCount
-                  nodes {
-                    name
-                  }
-                }
-                stargazers {
-                  totalCount
-                }
-              }
             }
           }
         }
@@ -55,6 +44,47 @@ module.exports = {
       rateLimit {
         limit
         remaining
+        cost
+        resetAt
+      }
+    }`,
+
+  /**
+   * Graphql query to search repositories on GitHub API.
+   */
+  searchRepos: gql`
+    query searchRepos($query: String!, $after: String) {
+      search(type: REPOSITORY, query: $query, first: 100, after: $after) {
+        repositoryCount
+        nodes {
+          ... on Repository {
+            name: nameWithOwner
+            description
+            homepageUrl
+            url
+            languages(first: 100) {
+              totalCount
+              nodes {
+                name
+              }
+            }
+            stargazers {
+              total: totalCount
+            }
+            createdAt
+            isPrivate
+          }
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+      rateLimit {
+        limit
+        remaining
+        cost
+        resetAt
       }
     }`
 }

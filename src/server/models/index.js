@@ -18,5 +18,17 @@ module.exports = {
     collaborations: Sequelize.INTEGER
   }, {
     timestamps: false
+  }),
+  Repo: sequelize.define('repo', {
+    id: { type: Sequelize.INTEGER, primaryKey: true },
+    name: Sequelize.STRING(100),
+    description: Sequelize.STRING(200),
+    homepageUrl: Sequelize.STRING(200),
+    url: Sequelize.STRING(200),
+    languages: Sequelize.STRING(1000),
+    stargazers: Sequelize.INTEGER,
+    createdAt: Sequelize.DATE,
+  }, {
+    timestamps: false
   })
 }
