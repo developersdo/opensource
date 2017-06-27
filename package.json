@@ -17,6 +17,7 @@
     "sequelize-cli": "^2.7.0"
   },
   "scripts": {
-    "sequelize": "sequelize"
+    "sequelize": "sequelize",
+    "scrape": "node -e \"require('./src/server/services/scraper').scrape()\""
   }
 }

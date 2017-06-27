@@ -27,6 +27,8 @@ module.exports = {
     url: Sequelize.STRING(200),
     languages: Sequelize.STRING(1000),
     stargazers: Sequelize.INTEGER,
+    watchers: Sequelize.INTEGER,
+    forks: Sequelize.INTEGER,
     createdAt: Sequelize.DATE,
   }, {
     timestamps: false

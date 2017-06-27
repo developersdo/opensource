@@ -71,6 +71,12 @@ module.exports = {
             stargazers {
               total: totalCount
             }
+            watchers {
+              total: totalCount
+            }
+            forks {
+              total: totalCount
+            }
             createdAt
             isPrivate
           }

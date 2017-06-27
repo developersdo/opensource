@@ -32,6 +32,8 @@ module.exports = {
           url: repo.url,
           languages: repo.languages.nodes.map(l => l.name.toLowerCase()).join(' '),
           stargazers: repo.stargazers.total,
+          watchers: repo.watchers.total,
+          forks: repo.forks.total,
           createdAt: new Date(repo.createdAt)
         }))
       )

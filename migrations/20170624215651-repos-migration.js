@@ -7,6 +7,8 @@ module.exports = {
       url: { type: Sequelize.STRING },
       languages: { type: Sequelize.STRING },
       stargazers: { type: Sequelize.INTEGER },
+      watchers: { type: Sequelize.INTEGER },
+      forks: { type: Sequelize.INTEGER },
       createdAt: { type: Sequelize.DATE }
     })
   },
