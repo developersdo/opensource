@@ -24,6 +24,11 @@ If you want to run this project locally you will need: [NodeJS 8+](https://nodej
 
 That's it! Happy coding.
 
+### Development scripts
+
+ - `yarn sequelize` – to use sequelize, pass cli args as follow: `yarn sequelize -- db:migrate`.
+ - `yarn scrape` – scrape for all GitHub users and repos as configured.
+
 <div align=center>
 With ♥︎ from <a href="https://github.com/developersdo/opensource/graphs/contributors">all contributors</a>.
 </div>
