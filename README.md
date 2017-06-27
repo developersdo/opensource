@@ -19,7 +19,7 @@ If you want to run this project locally you will need: [NodeJS 8+](https://nodej
 
  1. `yarn install`
  2. Copy `config/default.json` to `config/development.json`.
- 3. [Generate a GitHub personall access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
+ 3. [Generate a GitHub personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
  4. Add your GitHub personal access token to `config/development.json` (this file is git-ignored).
 
 That's it! Happy coding.
