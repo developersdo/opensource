@@ -4,6 +4,7 @@ module.exports = {
       id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
       name: { type: Sequelize.STRING },
       description: { type: Sequelize.STRING },
+      homepageUrl: { type: Sequelize.STRING },
       url: { type: Sequelize.STRING },
       languages: { type: Sequelize.STRING },
       stargazers: { type: Sequelize.INTEGER },

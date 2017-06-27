@@ -28,6 +28,9 @@ That's it! Happy coding.
 
  - `yarn sequelize` – to use sequelize, pass cli args as follow: `yarn sequelize -- db:migrate`.
  - `yarn scrape` – scrape for all GitHub users and repos as configured.
+ - `yarn scrape:users` – scrape for all GitHub repos.
+ - `yarn scrape:repo` – scrape for all GitHub users.
+ - `yarn generate` – generate GitHub users and repos for front-end usage.
 
 <div align=center>
 With ♥︎ from <a href="https://github.com/developersdo/opensource/graphs/contributors">all contributors</a>.
