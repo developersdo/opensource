@@ -3,7 +3,7 @@ const path = require('path')
 
 const { User, Repo } = require('../../models')
 
-const target = path.join(__dirname, '../../../../data/generated/')
+const target = path.join(__dirname, '../../../../docs/data')
 
 module.exports = {
   async generate() {
