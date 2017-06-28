@@ -1,0 +1,39 @@
+.name {
+  display: block;
+  height: 2em;
+  margin-bottom: .5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.6em;
+  line-height: 1em;
+  color: #222;
+}
+
+.user {
+  color: #666;
+  margin-bottom: 1em;
+}
+
+.avatar {
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+.languages {
+  height: 1em;
+  > span {
+    color: #222;
+  }
+}
+
+.numbers {
+  span {
+    margin-right: 1em;
+
+    * {
+      vertical-align: bottom;
+    }
+  }
+}
