@@ -3,6 +3,8 @@ import html from 'choo/html'
 import popularRepos from './components/popular-repos'
 import styles from './styles.scss'
 
+const base = process.env.NODE_ENV === 'development' ? '' : '/opensource'
+
 export default (state, emit) => {
 
   return html`
@@ -20,8 +22,8 @@ export default (state, emit) => {
 
   function load() {
     Promise.resolve()
-      .then(fetchData('/data/users.json', 'users.loaded', 'users.loaded:failed'))
-      .then(fetchData('/data/repos.json', 'repos.loaded', 'repos.loaded:failed'))
+      .then(fetchData(`${base}/data/users.json`, 'users.loaded', 'users.loaded:failed'))
+      .then(fetchData(`${base}/data/repos.json`, 'repos.loaded', 'repos.loaded:failed'))
   }
 
   function fetchData(url, succeed, failed) {
