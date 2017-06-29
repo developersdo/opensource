@@ -16,6 +16,7 @@ export default (state, emit) => {
       <div class="section page-container">
         ${ renderPopularRepos(state, emit) }
       </div>
+      <div class="divider"></div>
       <div class="section page-container">
         ${ renderStats(state, emit) }
       </div>

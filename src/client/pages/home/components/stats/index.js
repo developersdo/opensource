@@ -22,12 +22,11 @@ export default (state, emit) => {
 
   return html`
     <div>
-      <h3>📊 Stats</h3>
       <div class="row">
-        <div class="col l6">
+        <h3>📊 Stats</h3>
+        <div class="col s12">
           ${ state.repos.length ? renderLangStats(langStats) : renderLoading() }
         </div>
-        <div class="col l6"></div>
       </div>
     </div>
   `
