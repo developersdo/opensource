@@ -1,6 +1,7 @@
 import html from 'choo/html'
 
-import popularRepos from './components/popular-repos'
+import renderPopularRepos from './components/popular-repos'
+import renderStats from './components/stats'
 import styles from './styles.scss'
 
 export default (state, emit) => {
@@ -13,7 +14,10 @@ export default (state, emit) => {
       </header>
       <div class="divider"></div>
       <div class="section page-container">
-        ${ popularRepos(state, emit) }
+        ${ renderPopularRepos(state, emit) }
+      </div>
+      <div class="section page-container">
+        ${ renderStats(state, emit) }
       </div>
     </div>
   `
