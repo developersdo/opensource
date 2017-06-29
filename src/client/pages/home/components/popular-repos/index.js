@@ -46,8 +46,8 @@ export default (state, emit) => {
 
   function renderRepo(repo, index) {
     return html`
-      <div class="col s4">
-        <div class="card z-depth-${ 4 - (Math.floor(index / 4)) }">
+      <div class="col s12 l6 xl4">
+        <div class="card z-depth-3">
           <div class="card-content">
             <a href="${ repo.url }" target="_blank" class="${ styles.name }">${ repo.name }</a>
             <div class="${ styles.user }">
