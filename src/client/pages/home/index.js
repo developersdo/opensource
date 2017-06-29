@@ -1,35 +1,27 @@
 import html from 'choo/html'
 
-import popularRepos from './components/popular-repos'
+import renderPopularRepos from './components/popular-repos'
+import renderStats from './components/stats'
 import styles from './styles.scss'
-
-const base = process.env.NODE_ENV === 'development' ? '' : '/opensource'
 
 export default (state, emit) => {
 
   return html`
-    <div onload=${ load }>
-      <header class="${ styles.header }">
-        <h1><span>Open Source communities</span></h1>
-        <p>Dominican developers are contributing to open source on GitHub!</p>
-      </header>
+    <div>
+      <div class="row">
+        <header class="${ styles.header }">
+          <h1><span>Open Source communities</span></h1>
+          <p>Dominican developers are contributing to open source on GitHub!</p>
+        </header>
+      </div>
       <div class="divider"></div>
       <div class="section page-container">
-        ${ popularRepos(state, emit) }
+        ${ renderPopularRepos(state, emit) }
+      </div>
+      <div class="divider"></div>
+      <div class="section page-container">
+        ${ renderStats(state, emit) }
       </div>
     </div>
   `
-
-  function load() {
-    Promise.resolve()
-      .then(fetchData(`${base}/data/users.json`, 'users.loaded', 'users.loaded:failed'))
-      .then(fetchData(`${base}/data/repos.json`, 'repos.loaded', 'repos.loaded:failed'))
-  }
-
-  function fetchData(url, succeed, failed) {
-    return () => fetch(url)
-      .then((data) => data.json())
-      .then((json) => emit(succeed, json))
-      .catch((error) => emit(failed, error))
-  }
 }
