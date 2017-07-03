@@ -7,6 +7,7 @@ export default (app) => {
     state.loading = false
     state.users = []
     state.repos = []
+    state.currentReposPage = 0
 
     // Initialize.
     fetch(`${base}/data/users.json`)
@@ -27,6 +28,11 @@ export default (app) => {
 
     emitter.on('users.loaded', (users) => {
       state.users = users
+      emitter.emit('render')
+    })
+
+    emitter.on('repos.pagination.changed', (currentPage) => {
+      state.currentReposPage = currentPage
       emitter.emit('render')
     })
   })
