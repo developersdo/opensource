@@ -58,3 +58,6 @@ typings/
 .env
 
 config/development.json
+
+# mac os ds store files
+.DS_Store
