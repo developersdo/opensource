@@ -1,5 +1,6 @@
 import html from 'choo/html'
 import styles from './styles.scss'
+import renderLoading from '../../../../components/loading'
 
 const reposPaginationSize = 12
 
@@ -75,7 +76,7 @@ export default (state, emit) => {
     let currentPageRepos = getPageOfRepos(state.currentReposPage)
       .map(addUserAndLanguageInfo)
 
-    return currentPageRepos.length ? currentPageRepos.map(renderRepo) : html`<div class="progress"><div class="indeterminate"></div></div>`
+    return currentPageRepos.length ? currentPageRepos.map(renderRepo) : renderLoading()
   }
 
   function getPageOfRepos(index) {
