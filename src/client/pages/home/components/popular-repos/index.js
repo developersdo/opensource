@@ -52,7 +52,7 @@ export default (state, emit) => {
               <img src="${ repo.user.avatarUrl }" class="${ styles.avatar }" />
               <a href="https://github.com/${ repo.user.login }" target="_blank">${ repo.user.login }</a>
             </div>
-            <div class="${ styles.languages}">
+            <div class="${ styles.languages }">
               ${ repo.languages.map(renderLanguage) }
             </div>
           </div>
