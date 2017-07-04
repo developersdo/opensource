@@ -3,6 +3,7 @@ import styles from './styles.scss'
 import renderLoading from '../../../../components/loading'
 
 const reposPaginationSize = 12
+const reposPageSpan = 4
 
 const languages = {
   'other': 'grey lighten-3',
@@ -35,9 +36,11 @@ export default (state, emit) => {
         ${ renderCurrentPageRepos() }
       </div>
       <ul class="pagination center">
+        <li class="${ state.currentReposPage == 0 ? 'disabled' : 'waves-effect' } ${ styles.paginationEdge }"><a onclick=${ goToFirstPage }><i class="material-icons">chevron_left</i><i class="material-icons">chevron_left</i></a></li>
         <li class="${ state.currentReposPage == 0 ? 'disabled' : 'waves-effect' }"><a onclick=${ goToPreviousPage }><i class="material-icons">chevron_left</i></a></li>
-        ${ getPagesList().map(renderPageNumbers) }
+        ${ getPagesList(state.currentReposPage, pagesCount, reposPageSpan).map(renderPageNumbers) }
         <li class="${ state.currentReposPage == pagesCount - 1 ? 'disabled' : 'waves-effect' }"><a onclick=${ goToNextPage }><i class="material-icons">chevron_right</i></a></li>
+        <li class="${ state.currentReposPage == pagesCount - 1 ? 'disabled' : 'waves-effect' } ${ styles.paginationEdge }"><a onclick=${ goToLastPage }><i class="material-icons">chevron_right</i><i class="material-icons">chevron_right</i></a></li>
       </ul>
     </div>
   `
@@ -97,9 +100,20 @@ export default (state, emit) => {
     }
   }
 
-  function getPagesList() {
+  function getPagesList(current, total, span) {
+    let leftSpan = current - span
+    let rightSpan = current + span + 1
+
+    if (leftSpan < 0) {
+      rightSpan += Math.abs(leftSpan)
+      leftSpan = 0
+    } else if (rightSpan > total) {
+      leftSpan -= rightSpan - total
+      rightSpan = total
+    }
+
     const pages = []
-    for (let i = 0; i < pagesCount; i++) {
+    for (let i = leftSpan; i < rightSpan; i++) {
       pages.push(i)
     }
     return pages
@@ -107,7 +121,7 @@ export default (state, emit) => {
 
   function renderPageNumbers(pageIndex) {
     return html`
-        <li onclick=${ () => selectPage(pageIndex) } class="${ state.currentReposPage == pageIndex ? 'active' : 'waves-effect' }"><a>${ pageIndex + 1 }</a></li>
+        <li onclick=${ () => selectPage(pageIndex) } class="${ state.currentReposPage == pageIndex ? 'active' : 'waves-effect' }"><a class="${ styles.paginationLink }">${ pageIndex + 1 }</a></li>
       `
   }
 
@@ -125,6 +139,14 @@ export default (state, emit) => {
     if (state.currentReposPage > 0) {
       emit('repos.pagination.changed', state.currentReposPage - 1)
     }
+  }
+
+  function goToFirstPage() {
+    emit('repos.pagination.changed', 0)
+  }
+
+  function goToLastPage() {
+    emit('repos.pagination.changed', pagesCount - 1)
   }
 
 }
