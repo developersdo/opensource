@@ -34,7 +34,8 @@ module.exports = {
           stargazers: repo.stargazers.total,
           watchers: repo.watchers.total,
           forks: repo.forks.total,
-          createdAt: new Date(repo.createdAt)
+          createdAt: new Date(repo.createdAt),
+          scrapedAt: new Date(),
         }))
       )
     })

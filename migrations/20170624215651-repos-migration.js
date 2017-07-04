@@ -10,7 +10,8 @@ module.exports = {
       stargazers: { type: Sequelize.INTEGER },
       watchers: { type: Sequelize.INTEGER },
       forks: { type: Sequelize.INTEGER },
-      createdAt: { type: Sequelize.DATE }
+      createdAt: { type: Sequelize.DATE },
+      scrapedAt: { type: Sequelize.DATE },
     })
   },
 

@@ -13,7 +13,8 @@ module.exports = {
       following: { type: Sequelize.INTEGER },
       sources: { type: Sequelize.INTEGER },
       forked: { type: Sequelize.INTEGER },
-      collaborations: { type: Sequelize.INTEGER }
+      collaborations: { type: Sequelize.INTEGER },
+      scrapedAt: { type: Sequelize.DATE },
     })
   },
 

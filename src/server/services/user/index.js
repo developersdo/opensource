@@ -38,7 +38,8 @@ module.exports = {
           sources: user.sources ? user.sources.total : 0,
           forked: user.forked ? user.forked.total : 0,
           collaborations: user.collaborations ? user.collaborations.total : 0,
-          createdAt: new Date(user.createdAt)
+          createdAt: new Date(user.createdAt),
+          scrapedAt: new Date(),
         }))
       )
     })

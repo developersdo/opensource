@@ -15,7 +15,8 @@ module.exports = {
     following: Sequelize.INTEGER,
     sources: Sequelize.INTEGER,
     forked: Sequelize.INTEGER,
-    collaborations: Sequelize.INTEGER
+    collaborations: Sequelize.INTEGER,
+    scrapedAt: Sequelize.DATE,
   }, {
     timestamps: false
   }),
@@ -30,6 +31,7 @@ module.exports = {
     watchers: Sequelize.INTEGER,
     forks: Sequelize.INTEGER,
     createdAt: Sequelize.DATE,
+    scrapedAt: Sequelize.DATE,
   }, {
     timestamps: false
   })
