@@ -21,7 +21,6 @@ module.exports = {
     timestamps: false
   }),
   Repo: sequelize.define('repo', {
-
     id: { type: Sequelize.STRING(200), primaryKey: true },
     name: Sequelize.STRING(100),
     description: Sequelize.STRING(200),
