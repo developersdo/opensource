@@ -11,7 +11,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   createRepos(repos = []) {
-    print.trace(`Create ${repos.length} repos...`);
+    print.trace(`Create ${repos.length} repos...`)
 
     // Find existing repository by their name.
     return Repo.findAll({
@@ -23,20 +23,21 @@ module.exports = {
 
       // Prevent creating repo with same name.
       const existingIds = results.map(r => r.id);
-      const newRepos = repos.filter(r => existingIds.indexOf(r.id) === -1);
+      const newRepos = repos.filter(r => existingIds.indexOf(r.id) === -1)
 
       return Repo.bulkCreate(
           newRepos.map((repo) => ({
-            id:repo.id,
-          name: repo.name,
-          description: repo.description,
-          url: repo.url,
-          languages: repo.languages.nodes.map(l => l.name.toLowerCase()).join(' '),
-          stargazers: repo.stargazers.total,
-          watchers: repo.watchers.total,
-          forks: repo.forks.total,
-          createdAt: new Date(repo.createdAt),
-          scrapedAt: new Date(),
+              id:repo.id,
+              name: repo.name,
+              description: repo.description,
+              url: repo.url,
+              languages: repo.languages.nodes.map(l => l.name.toLowerCase()).join(' '),
+              stargazers: repo.stargazers.total,
+              watchers: repo.watchers.total,
+              forks: repo.forks.total,
+              createdAt: new Date(repo.createdAt),
+              scrapedAt: new Date(),
+
         }))
       )
     })
