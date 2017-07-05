@@ -52,6 +52,7 @@ module.exports = {
   /**
    * Graphql query to search repositories on GitHub API.
    */
+
   searchRepos: gql`
     query searchRepos($query: String!, $after: String) {
       search(type: REPOSITORY, query: $query, first: 100, after: $after) {
