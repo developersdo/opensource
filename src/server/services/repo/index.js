@@ -11,22 +11,23 @@ module.exports = {
    * @return {Promise} A promise.
    */
   createRepos(repos = []) {
-    print.trace(`Create ${repos.length} repos...`)
+    print.trace(`Create ${repos.length} repos...`);
 
     // Find existing repository by their name.
     return Repo.findAll({
-      attributes: ['name'],
+      attributes: ['id'],
       where: {
-        name: { $in: repos.map(r => r.name).filter(r => r) }
+        id: { $in: repos.map(r => r.id).filter(r => r) }
       }
     }).then((results) => {
 
       // Prevent creating repo with same name.
-      const existingNames = results.map(r => r.name)
-      const newRepos = repos.filter(r => existingNames.indexOf(r.name) === -1)
+      const existingIds = results.map(r => r.id);
+      const newRepos = repos.filter(r => existingIds.indexOf(r.id) === -1);
 
       return Repo.bulkCreate(
-        newRepos.map((repo) => ({
+          newRepos.map((repo) => ({
+            id:repo.id,
           name: repo.name,
           description: repo.description,
           url: repo.url,
