@@ -51,6 +51,13 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 # Yarn Integrity file
 .yarn-integrity
 
@@ -61,3 +68,5 @@ config/development.json
 
 # mac os ds store files
 .DS_Store
+
+#IDE/Editors
