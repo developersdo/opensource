@@ -28,7 +28,7 @@ That's it! Happy coding.
 
  - `yarn scrape` – scrape for all GitHub users and repos as configured.
  - `yarn scrape:users` – scrape for all GitHub repos.
- - `yarn scrape:repo` – scrape for all GitHub users.
+ - `yarn scrape:repos` – scrape for all GitHub users.
  - `yarn generate` – generate GitHub users and repos for front-end usage.
  - `yarn sequelize` – to use sequelize, pass cli args as follow: `yarn sequelize -- db:migrate`.
    - `yarn sequelize -- db:migrate` – Run all pending database migrations.
