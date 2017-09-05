@@ -19,10 +19,10 @@ module.exports = {
       await this.scrapeUsers(`location:"${location}"`)
     }
 
-    // Scrape users data for explicit defined username to include.
-    const loginsChunks = utils.chunk(config.get('users.include'), 50)
-    for (const loginsChunk of loginsChunks) {
-      const query = loginsChunk.map(l => `user:${loginsChunk}`).join(' ')
+    // Scrape users data for specific users (those who can't be scraped by their location).
+    const usernamesChunks = utils.chunk(config.get('users.include'), 50)
+    for (const usernames of usernamesChunks) {
+      const query = usernames.map(username => `user:${username}`).join(' ')
       await this.scrapeUsers(query)
     }
   },

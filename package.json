@@ -38,6 +38,7 @@
     "scrape:users": "node -e \"require('./src/server/services/scraper/users').scrape()\"",
     "scrape:repos": "node -e \"require('./src/server/services/scraper/repos').scrape()\"",
     "generate": "node -e \"require('./src/server/services/generator').generate()\"",
+    "refresh": "yarn scrape; yarn generate",
     "build": "cross-env NODE_ENV=\"production\" webpack -p --config config/webpack.config.js",
     "serve": "cross-env NODE_ENV=\"development\" webpack-dev-server --config config/webpack.config.js --watch --progress --colors --inline"
   }

@@ -35,6 +35,21 @@ module.exports = {
               total: totalCount
             }
           }
+          ... on Organization {
+            login
+            name
+            url
+            avatarUrl
+            forked: repositories(isFork: true, privacy: PUBLIC, affiliations: OWNER) {
+              total: totalCount
+            }
+            collaborations: repositories(privacy: PUBLIC, affiliations: COLLABORATOR) {
+              total: totalCount
+            }
+            sources: repositories(isFork: false, privacy: PUBLIC, affiliations: OWNER, first: 100) {
+              total: totalCount
+            }
+          }
         }
         pageInfo {
           hasNextPage

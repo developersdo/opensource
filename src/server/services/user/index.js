@@ -30,6 +30,7 @@ module.exports = {
           login: user.login,
           name: user.name,
           url: user.url,
+          type: user.__typename,
           avatarUrl: user.avatarUrl,
           company: user.company,
           location: user.location,

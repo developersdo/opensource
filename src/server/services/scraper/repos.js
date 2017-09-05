@@ -15,7 +15,7 @@ module.exports = {
 
     // Get all stored user logins.
     const logins = await srv.user.findAllUsers('login')
-    const loginsChunks = utils.chunk(logins.map(l => l.login), 50)
+    const loginsChunks = utils.chunk(logins.filter(l => l).map(l => l.login), 50)
 
     // Scrape repos data for each group of logins.
     for (const loginsChunk of loginsChunks) {
@@ -40,7 +40,7 @@ module.exports = {
 
         // Store repos.
         const repos = response.data.search.nodes
-        return srv.repo.createRepos(repos)
+        return srv.repo.createOrUpdateRepos(repos)
           .then(() => {
 
             // If a next page is available then let's fetch it.

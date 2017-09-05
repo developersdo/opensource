@@ -20,11 +20,6 @@ module.exports = {
       query: queries.searchUsers,
       variables: { query, after }
     }).then(logRateLimit)
-      .then((response) => {
-        // Filter user nodes.
-        response.data.search.nodes = response.data.search.nodes.filter((node) => node.__typename === 'User')
-        return response
-      })
   },
 
   /**
@@ -47,7 +42,7 @@ module.exports = {
         // Filter repository nodes by GraphQL typename and by privacy (because we may be using a personal token
         // which may include private repository). We don't want to leak anything sensitive.
         response.data.search.nodes = response.data.search.nodes.filter((node) => {
-          return node.__typename === 'Repository' || !node.isPrivate
+          return node.__typename === 'Repository' && !node.isPrivate
         })
         return response
       })

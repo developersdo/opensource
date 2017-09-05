@@ -4,6 +4,7 @@ module.exports = {
       id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
       login: { type: Sequelize.STRING, unique: 'usersLoginIndex' },
       name: { type: Sequelize.STRING },
+      type: { type: Sequelize.STRING },
       url: { type: Sequelize.STRING },
       avatarUrl: { type: Sequelize.STRING },
       company: { type: Sequelize.STRING },
