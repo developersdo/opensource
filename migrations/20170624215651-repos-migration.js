@@ -1,7 +1,7 @@
 module.exports = {
   up(queryInterface, Sequelize) {
     queryInterface.createTable('repos', {
-      id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+      id: { type: Sequelize.STRING, primaryKey: true },
       name: { type: Sequelize.STRING },
       description: { type: Sequelize.STRING },
       homepageUrl: { type: Sequelize.STRING },
