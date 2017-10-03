@@ -35,6 +35,7 @@ fi
 if [ -d $REPO_PATH ]; then
   echo "⤵️  Pulling latest changes..."
   cd $REPO_PATH
+  git reset --hard
   git pull --quiet origin $REPO_BRANCH
 else
   echo "⤵️  Cloning repository..."
@@ -63,8 +64,8 @@ yarn refresh --silent
 
 # Add changes, commit and push.
 echo "📦  Preparing commit..."
-git --quiet add .
-git --quiet commit -m 'Data updated (automatically).'
-git --quiet push origin $REPO_BRANCH
+git add .
+git commit -m 'Data updated (automatically).'
+git push origin $REPO_BRANCH
 
 echo "✨  All good!"
