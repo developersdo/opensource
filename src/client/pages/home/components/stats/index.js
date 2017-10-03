@@ -5,32 +5,32 @@ import styles from './styles.scss'
 
 export default (state, emit) => {
 
-    // Count langaues for each repos.
-    const langStats = state.repos.reduce((stats, repo) => {
-        const langs = repo.languages
-            .split(' ')
-            .filter((lang) => lang)
+  // Count langaues for each repos.
+  const langStats = state.repos.reduce((stats, repo) => {
+    const langs = repo.languages
+      .split(' ')
+      .filter((lang) => lang)
 
-        langs.forEach((lang) => {
-            if (!stats[lang]) {
-                stats[lang] = 0
-            }
-            stats[lang]++
-        })
-        return stats
-    }, {})
+    langs.forEach((lang) => {
+      if (!stats[lang]) {
+        stats[lang] = 0
+      }
+      stats[lang]++
+    })
+    return stats
+  }, {})
 
-    const langs = Object.keys(langStats)
-        .map((name) => {
-            return {
-                name,
-                total: langStats[name],
-                percentage: ((langStats[name] / state.repos.length) * 100).toFixed(2)
-            }
-        })
-        .sort((a, b) => b.total - a.total)
+  const langs = Object.keys(langStats)
+    .map((name) => {
+      return {
+        name,
+        total: langStats[name],
+        percentage: ((langStats[name] / state.repos.length) * 100).toFixed(2)
+      }
+    })
+    .sort((a, b) => b.total - a.total)
 
-    return html `
+  return html`
     <div>
       <div class="row">
         <h3>📊 Stats</h3>
@@ -44,9 +44,9 @@ export default (state, emit) => {
     </div>
   `
 
-    function renderLangStats(langs) {
-        langs = langs.slice(0, 12)
-        return html `
+  function renderLangStats(langs) {
+    langs = langs.slice(0, 12)
+    return html`
       <div>
         <h4>Popular Languages <small>(across ${ state.repos.length.toLocaleString() } repos)</small></h4>
         ${ langs.map((lang) => {
