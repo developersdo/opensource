@@ -1,5 +1,4 @@
-<h1 align=center>Local open source communities</h1>
-<p align=center>http://developersdo.github.io/opensource  – Coming soon!</p>
+<h1 align=center>✨ Local Open Source Communities ✨</h1>
 
 This repository host the source code of the **http://developersdo.github.io/opensource** website.
 
