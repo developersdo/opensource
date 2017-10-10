@@ -23,8 +23,10 @@
 
 .languages {
   height: 1em;
+  display: inline;
   > span {
     color: #222;
+    margin-bottom: 1em;
   }
 }
 
