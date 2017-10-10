@@ -34,9 +34,7 @@
   },
   "scripts": {
     "sequelize": "sequelize",
-    "scrape": "node -e \"require('./src/server/services/scraper').scrape()\"",
-    "scrape:users": "node -e \"require('./src/server/services/scraper/users').scrape()\"",
-    "scrape:repos": "node -e \"require('./src/server/services/scraper/repos').scrape()\"",
+    "scrape": "./src/server/scripts/scrape.js",
     "generate": "node -e \"require('./src/server/services/generator').generate()\"",
     "refresh": "yarn scrape; yarn generate",
     "build": "cross-env NODE_ENV=\"production\" webpack -p --config config/webpack.config.js",
