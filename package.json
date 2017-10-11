@@ -16,6 +16,7 @@
     "fs-extra": "^4.0.1",
     "graphql-tag": "^2.4.0",
     "isomorphic-fetch": "^2.2.1",
+    "minimist": "^1.2.0",
     "sequelize": "^4.2.0",
     "sqlite3": "^3.1.8"
   },
