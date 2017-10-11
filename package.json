@@ -40,7 +40,7 @@
     "scrape:users": "node -e \"require('./src/server/services/scraper/users').scrape()\"",
     "scrape:repos": "node -e \"require('./src/server/services/scraper/repos').scrape()\"",
     "generate-data": "./src/server/services/scripts/generate-data.js",
-    "refresh-data": "yarn scrape; yarn generate",
+    "refresh": "yarn scrape; yarn generate-data",
     "build": "cross-env NODE_ENV=\"production\" webpack -p --config config/webpack.config.js",
     "serve": "cross-env NODE_ENV=\"development\" webpack-dev-server --config config/webpack.config.js --watch --progress --colors --inline",
     "test": "echo \"We should write some tests!\""
