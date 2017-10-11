@@ -31,7 +31,8 @@ That's it! Happy coding.
  - `yarn generate` – generate GitHub users and repos for front-end usage.
  - `yarn sequelize` – to use sequelize, pass cli args as follow: `yarn sequelize -- db:migrate`.
    - `yarn sequelize -- db:migrate` – Run all pending database migrations.
-   - `yarn sequelize -- db:rollback` – Rollback last database migration.
+   - `yarn sequelize -- db:migrate:undo` – Rollback last database migration.
+   - `yarn sequelize -- db:migrate:undo:all` – Rollback all database migration.
 
 <div align=center>
 With ♥︎ from <a href="https://github.com/developersdo/opensource/graphs/contributors">all contributors</a>.
