@@ -17,8 +17,7 @@
     "graphql-tag": "^2.4.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
-    "sequelize": "^4.2.0",
-    "sqlite3": "^3.1.8"
+    "sequelize": "^4.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -29,6 +28,7 @@
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "sequelize-cli": "3",
+    "sqlite3": "^3.1.13",
     "style-loader": "0.19",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
@@ -36,9 +36,7 @@
   "scripts": {
     "sequelize": "sequelize",
     "sequelize:debug": "cross-env DEBUG=\"sequelize*\" sequelize",
-    "scrape": "node -e \"require('./src/server/services/scraper').scrape()\"",
-    "scrape:users": "node -e \"require('./src/server/services/scraper/users').scrape()\"",
-    "scrape:repos": "node -e \"require('./src/server/services/scraper/repos').scrape()\"",
+    "scrape":"src/server/scripts/scraper.js",
     "generate-data": "./src/server/services/scripts/generate-data.js",
     "refresh": "yarn scrape; yarn generate-data",
     "build": "cross-env NODE_ENV=\"production\" webpack -p --config config/webpack.config.js",
