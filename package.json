@@ -36,7 +36,7 @@
   "scripts": {
     "sequelize": "sequelize",
     "sequelize:debug": "cross-env DEBUG=\"sequelize*\" sequelize",
-    "scrape":"src/server/scripts/scraper.js",
+    "scrape": "./src/server/scripts/scraper.js",
     "generate-data": "./src/server/services/scripts/generate-data.js",
     "refresh": "yarn scrape; yarn generate-data",
     "build": "cross-env NODE_ENV=\"production\" webpack -p --config config/webpack.config.js",
