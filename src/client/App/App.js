@@ -13,12 +13,14 @@ const basename = '/opensource'
 
 const App = () => (
   <BrowserRouter basename={basename}>
-    <div className="container">
+    <div id="app">
       <NavBar/>
-      <Route exact path="/" render={() => <Redirect to="/repositories" />} />
-      <Route path="/repositories" component={Repositories} />
-      <Route path="/developers" component={Developers} />
-      <Route path="/about" component={About} />
+      <div className="container">
+        <Route exact path="/" render={() => <Redirect to="/repositories" />} />
+        <Route path="/repositories" component={Repositories} />
+        <Route path="/developers" component={Developers} />
+        <Route path="/about" component={About} />
+      </div>
     </div>
   </BrowserRouter>
 )
