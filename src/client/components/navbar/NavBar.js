@@ -1,20 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter, matchPath } from 'react-router-dom'
+import NavBarItem from './navbar-item/NavBarItem'
 
-const NavBar = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link to="/repositories">Repositories</Link>
-      </li>
-      <li>
-        <Link to="/developers">Developers</Link>
-      </li>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-    </ul>
+const NavBar = ({ location }) => (
+  <nav className="blue darken-1">
+    <div className="nav-wrapper container">
+      <a href="#" className="brand-logo">Dominican Open Source</a>
+      <ul className="right hide-on-med-and-down">
+        <NavBarItem to="/repositories">Repositories</NavBarItem>
+        <NavBarItem to="/developers">Developers</NavBarItem>
+        <NavBarItem to="/about">About</NavBarItem>
+      </ul>
+    </div>
   </nav>
 )
 
-export default NavBar
+export default withRouter(NavBar)
