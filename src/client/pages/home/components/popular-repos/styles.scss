@@ -49,3 +49,12 @@
     width: 10px
   }
 }
+
+.wavesEffect {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1;
+  transition: .3s ease-out;
+}
