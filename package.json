@@ -16,6 +16,7 @@
     "lodash": "^4.17.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-list": "^0.8.8",
     "react-router-dom": "^4.2.2",
     "sequelize": "^4.2.0"
   },

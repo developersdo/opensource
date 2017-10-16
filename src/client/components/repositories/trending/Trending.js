@@ -1,7 +1,9 @@
 import React from 'react'
 
 const TrendingRepositories = () => (
-  <h1>Trending Repositories</h1>
+  <p style={{ fontSize: '2em', textAlign: 'center' }}>
+    <i className="material-icons">info_outline</i> Coming soon!
+  </p>
 )
 
 export default TrendingRepositories
