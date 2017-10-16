@@ -1,4 +1,4 @@
-const base = process.env.NODE_ENV === 'development' ? '' : '/opensource'
+const urlBase = process.env.NODE_ENV === 'development' ? '' : '/opensource'
 
 export default (app) => {
   app.use((state, emitter) => {
@@ -10,12 +10,12 @@ export default (app) => {
     state.currentReposPage = 0
 
     // Initialize.
-    fetch(`${base}/data/users.json`)
+    fetch(`${urlBase}/data/users.json`)
       .then((response) => response.json())
       .then((users) => emitter.emit('users.loaded', users))
       .catch((error) => emitter.emit('users.loaded:failed', error));
 
-    fetch(`${base}/data/repos.json`)
+    fetch(`${urlBase}/data/repos.json`)
       .then((response) => response.json())
       .then((repos) => emitter.emit('repos.loaded', repos))
       .catch((error) => emitter.emit('repos.loaded:failed', error));

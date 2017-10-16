@@ -12,6 +12,7 @@ module.exports = {
         nodes {
           __typename
           ... on User {
+            id
             login
             name
             url: websiteUrl

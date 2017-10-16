@@ -1,13 +1,12 @@
-<h1 align=center>Local open source communities</h1>
-<p align=center>http://developersdo.github.io/opensource  – Coming soon!</p>
+<h1 align=center>✨ Local Open Source Communities ✨</h1>
 
-This repository host the source code of the _upcoming_ http://developersdo.github.io/opensource website.
+This repository hosts the source code of the **http://developersdo.github.io/opensource** website.
 
-**Local open source communities** is an initiative to gather all possible public data about users and repos from Dominican Republic in GitHub using the [GraphQL API](https://developer.github.com/v4/). Then build and serve a public website showing all the local effort that Dominican are contributing towards open source.
+**Local open source communities** is an initiative to gather all possible public data about projects from the Dominican Republic in GitHub using the [GraphQL API](https://developer.github.com/v4/). Build and serve a public website showing all the local efforts that Dominicans are contributing toward open source.
 
 ## Want to join?
 
-There are different ways you can join in this local effort:
+There are different ways to participate in this local effort:
 
  - You can include your GitHub users by adding the term “dominican” to your profile's location. Note: Dominicana is also accepted.
  - You can improve the code of the website or the scraper.
@@ -32,7 +31,8 @@ That's it! Happy coding.
  - `yarn generate` – generate GitHub users and repos for front-end usage.
  - `yarn sequelize` – to use sequelize, pass cli args as follow: `yarn sequelize -- db:migrate`.
    - `yarn sequelize -- db:migrate` – Run all pending database migrations.
-   - `yarn sequelize -- db:rollback` – Rollback last database migration.
+   - `yarn sequelize -- db:migrate:undo` – Rollback last database migration.
+   - `yarn sequelize -- db:migrate:undo:all` – Rollback all database migrations.
 
 <div align=center>
 With ♥︎ from <a href="https://github.com/developersdo/opensource/graphs/contributors">all contributors</a>.
