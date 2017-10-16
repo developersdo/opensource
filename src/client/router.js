@@ -1,7 +1,7 @@
 import home from './pages/home'
 
-const base = process.env.NODE_ENV === 'development' ? '/' : '/opensource'
+const urlBase = process.env.NODE_ENV === 'development' ? '/' : '/opensource'
 
 export default (app) => {
-  app.route(`${base}`, home)
+  app.route(`${urlBase}`, home)
 }

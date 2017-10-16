@@ -50,6 +50,7 @@ export default (state, emit) => {
       <div class="col s12 l6 xl4">
         <div class="card z-depth-3">
           <div class="card-content">
+            <span class="${ styles.cardNumber }">#${getRepoPositionNumber(index)}</span>
             <a href="${ repo.url }" target="_blank" class="${ styles.name }">${ repo.name }</a>
             <div class="${ styles.user }">
               <img src="${ repo.user.avatarUrl }" class="${ styles.avatar }" />
@@ -149,4 +150,7 @@ export default (state, emit) => {
     emit('repos.pagination.changed', pagesCount - 1)
   }
 
+  function getRepoPositionNumber(arrayIndex) {
+    return reposPaginationSize * state.currentReposPage + (arrayIndex + 1);
+  }
 }

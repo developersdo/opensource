@@ -42,8 +42,9 @@ module.exports = {
       .then((response) => {
 
         // Store users.
-        const users = response.data.search.nodes
-        return srv.user.createUsers(users)
+        const accounts = this.transform(response)
+        const users = accounts.filter((account) => account.type === 'User')
+        return srv.user.createOrUpdateUsers(users)
           .then(() => {
 
             // If a next page is available then let's fetch it.
@@ -51,5 +52,30 @@ module.exports = {
             return hasNextPage ? this.scrapeUsers(query, endCursor) : Promise.resolve()
           })
       })
+  },
+
+  /**
+   * Transform a response into user record object ready to be inserted.
+   * @param {Object} response The response.
+   * @return {Array}
+   */
+  transform(response) {
+    return response.data.search.nodes.map((node) => ({
+      originalId: node.id,
+      login: node.login,
+      name: node.name,
+      url: node.url,
+      type: node.__typename,
+      avatarUrl: node.avatarUrl,
+      company: node.company,
+      location: node.location,
+      followers: node.followers ? node.followers.total : 0,
+      following: node.following ? node.following.total : 0,
+      sources: node.sources ? node.sources.total : 0,
+      forked: node.forked ? node.forked.total : 0,
+      collaborations: node.collaborations ? node.collaborations.total : 0,
+      createdAt: new Date(node.createdAt),
+      scrapedAt: new Date(),
+    }))
   }
 }

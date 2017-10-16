@@ -6,11 +6,19 @@ const { User, Repo } = require('../../models')
 const target = path.join(__dirname, '../../../../docs/data')
 
 module.exports = {
+
+  /**
+   * Generate data.
+   */
   async generate() {
     await this.generateUsers()
     await this.generateRepos()
   },
 
+  /**
+   * Generate users data.
+   * @return {Promise}
+   */
   async generateUsers() {
     return await User.findAll()
       .then((users) => {
@@ -18,6 +26,10 @@ module.exports = {
       })
   },
 
+  /**
+   * Generate repos data.
+   * @return {Promise}
+   */
   async generateRepos() {
     return await Repo.findAll()
       .then((repos) => {

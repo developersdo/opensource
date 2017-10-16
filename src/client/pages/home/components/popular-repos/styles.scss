@@ -23,8 +23,10 @@
 
 .languages {
   height: 1em;
+  display: inline;
   > span {
     color: #222;
+    margin-bottom: 1em;
   }
 }
 
@@ -48,6 +50,12 @@
   i {
     width: 10px
   }
+}
+
+.cardNumber {
+  color: #6495ed;
+  font-size: 1.2em;
+  float: right;
 }
 
 .wavesEffect {
