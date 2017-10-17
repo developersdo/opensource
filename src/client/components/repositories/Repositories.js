@@ -16,7 +16,7 @@ const Repositories = (props) => (
     <Route exact path="/repositories" render={() => <Redirect to="/repositories/popular" />} />
     <Route path="/repositories/popular" render={() => <Popular repos={store.repos} />} />
     <Route path="/repositories/trending" component={Trending} />
-    <Route path="/repositories/new" component={New} />
+    <Route path="/repositories/new" render={() => <New repos={store.repos} />} />
   </div>
 )
 

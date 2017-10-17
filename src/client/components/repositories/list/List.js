@@ -4,7 +4,12 @@ import RepositoryCard from './card/RepositoryCard'
 
 const RepositoriesList = ({repos}) => (
   <ReactList
-    itemRenderer={(index, key) => <RepositoryCard key={key} repo={repos[index]} />}
+    itemRenderer={(index, key) => (
+      <RepositoryCard
+        key={key}
+        repo={repos[index]}
+      />
+    )}
     length={repos.length}
     type="uniform"
   />

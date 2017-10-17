@@ -85,7 +85,8 @@ function transformRepo(repo) {
       .then((users) => {
         return resolve(merge(repo, {
           languages: parseLanguages(repo.languages),
-          user: find(users.items, { login: repo.name.split('/')[0] })
+          user: find(users.items, { login: repo.name.split('/')[0] }),
+          createdAt: new Date(repo.createdAt),
         }))
       })
       .catch(reject)
