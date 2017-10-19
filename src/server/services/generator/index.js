@@ -3,7 +3,7 @@ const path = require('path')
 
 const { User, Repo } = require('../../models')
 
-const target = path.join(__dirname, '../../../../docs/data')
+const target = path.join(__dirname, '../../../../public/data')
 
 module.exports = {
 
