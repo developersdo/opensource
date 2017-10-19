@@ -14,7 +14,7 @@ const style = {
     marginRight: 10,
   },
   progress: {
-    height: 20,
+    height: 10,
   }
 }
 
@@ -59,9 +59,7 @@ class AboutPopularLanguages extends React.Component {
 
     languages.sort((a, b) => b.total - a.total)
 
-    const topLanguages = languages.slice(0, 12)
-
-    console.log(topLanguages)
+    const topLanguages = languages.slice(0, 10)
 
     return (
       <div>
