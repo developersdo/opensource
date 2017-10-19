@@ -4,13 +4,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DefinePlugin = webpack.DefinePlugin
 const CommonsChunkPlugin =  webpack.optimize.CommonsChunkPlugin
 
+const pathTo = {
+  app: path.join(__dirname, '../src/client/root.js'),
+  public: path.join(__dirname, '../public'),
+  index: path.join(__dirname, '../src/client/index.html')
+}
+
 module.exports = {
   entry: {
-    app: path.join(__dirname, '../src/client/app.js')
+    app: pathTo.app
   },
   output: {
-    path: path.join(__dirname, '../docs'),
-    filename: '[name].js'
+    path: pathTo.public,
+    filename: '[name].js',
+    publicPath: '/opensource'
   },
   module: {
     rules: [
@@ -30,11 +37,16 @@ module.exports = {
     ],
   },
   plugins: [
-    new DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
+    new DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../src/client/index.html'),
+      template: pathTo.index,
       inject: 'body',
-      hash: true
+      hash: true,
+      filename: 'index.html'
     }),
     new CommonsChunkPlugin({
       name: 'vendor',
@@ -42,6 +54,9 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: path.join(__dirname, '../docs')
+    contentBase: pathTo.public,
+    historyApiFallback: {
+      index: '/opensource/index.html'
+    }
   }
 }
