@@ -5,7 +5,10 @@ import NavBarItem from './navbar-item/NavBarItem'
 const NavBar = ({ location }) => (
   <nav className="blue darken-1">
     <div className="nav-wrapper container">
-      <a href="#" className="brand-logo">Dominican Open Source</a>
+      <span className="brand-logo">
+        <i className="material-icons">code</i>
+        Dominican Open Source
+      </span>
       <ul className="right hide-on-med-and-down">
         <NavBarItem to="/repositories">Repositories</NavBarItem>
         <NavBarItem to="/developers">Developers</NavBarItem>

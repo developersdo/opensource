@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
-import NavBar from '../components/navbar/NavBar'
+import NavBar from '../components/nav-bar/NavBar'
 import Repositories from '../components/repositories/Repositories'
 import Developers from '../components/developers/Developers'
 import About from '../components/about/About'
