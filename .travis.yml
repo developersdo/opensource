@@ -4,7 +4,9 @@ node_js:
 cache:
   yarn: true
 
-before_deploy: yarn build
+before_deploy:
+- yarn build \
+  && yarn generate-data
 deploy:
   provider: pages
   skip_cleanup: true
