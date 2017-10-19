@@ -36,11 +36,11 @@ export default (state, emit) => {
         ${ renderCurrentPageRepos() }
       </div>
       <ul class="pagination center">
-        <li class="${ state.currentReposPage == 0 ? 'disabled' : 'waves-effect' } ${ styles.paginationEdge }"><a onclick=${ goToFirstPage }><i class="material-icons">chevron_left</i><i class="material-icons">chevron_left</i></a></li>
-        <li class="${ state.currentReposPage == 0 ? 'disabled' : 'waves-effect' }"><a onclick=${ goToPreviousPage }><i class="material-icons">chevron_left</i></a></li>
+        <li class="${ state.currentReposPage === 0 ? 'disabled' : styles.wavesEffect } ${ styles.paginationEdge }"><a onclick=${ goToFirstPage }><i class="material-icons">chevron_left</i><i class="material-icons">chevron_left</i></a></li>
+        <li class="${ state.currentReposPage === 0 ? 'disabled' : styles.wavesEffect }"><a onclick=${ goToPreviousPage }><i class="material-icons">chevron_left</i></a></li>
         ${ getPagesList(state.currentReposPage, pagesCount, reposPageSpan).map(renderPageNumbers) }
-        <li class="${ state.currentReposPage == pagesCount - 1 ? 'disabled' : 'waves-effect' }"><a onclick=${ goToNextPage }><i class="material-icons">chevron_right</i></a></li>
-        <li class="${ state.currentReposPage == pagesCount - 1 ? 'disabled' : 'waves-effect' } ${ styles.paginationEdge }"><a onclick=${ goToLastPage }><i class="material-icons">chevron_right</i><i class="material-icons">chevron_right</i></a></li>
+        <li class="${ state.currentReposPage === pagesCount - 1 ? 'disabled' : styles.wavesEffect }"><a onclick=${ goToNextPage }><i class="material-icons">chevron_right</i></a></li>
+        <li class="${ state.currentReposPage === pagesCount - 1 ? 'disabled' : styles.wavesEffect } ${ styles.paginationEdge }"><a onclick=${ goToLastPage }><i class="material-icons">chevron_right</i><i class="material-icons">chevron_right</i></a></li>
       </ul>
     </div>
   `
@@ -122,7 +122,7 @@ export default (state, emit) => {
 
   function renderPageNumbers(pageIndex) {
     return html`
-        <li onclick=${ () => selectPage(pageIndex) } class="${ state.currentReposPage == pageIndex ? 'active' : 'waves-effect' }"><a class="${ styles.paginationLink }">${ pageIndex + 1 }</a></li>
+        <li onclick=${ () => selectPage(pageIndex) } class="${ state.currentReposPage === pageIndex ? 'active' : styles.wavesEffect }"><a class="${ styles.paginationLink }">${ pageIndex + 1 }</a></li>
       `
   }
 
