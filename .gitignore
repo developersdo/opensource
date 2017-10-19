@@ -67,7 +67,7 @@ typings/
 config/development.json
 public/*
 !public/404.html
-!public/data
+!public/data/*.json
 
 # mac os ds store files
 .DS_Store
