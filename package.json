@@ -44,7 +44,7 @@
     "generate-data": "./src/server/services/scripts/generate-data.js",
     "refresh": "yarn scrape; yarn generate-data",
     "build": "cross-env NODE_ENV=\"production\" webpack -p --config config/webpack.config.js",
-    "serve": "cross-env NODE_ENV=\"development\" webpack-dev-server --config config/webpack.config.js --watch --progress --colors --inline --output-public-path /opensource",
+    "serve": "cross-env NODE_ENV=\"development\" webpack-dev-server --config config/webpack.config.js --watch --progress --colors --inline",
     "test": "echo \"We should write some tests!\""
   },
   "browserlist": ">1%, last 2 versions"

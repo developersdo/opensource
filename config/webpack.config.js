@@ -16,7 +16,8 @@ module.exports = {
   },
   output: {
     path: pathTo.public,
-    filename: '[name].js'
+    filename: '[name].js',
+    publicPath: '/opensource'
   },
   module: {
     rules: [
