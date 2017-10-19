@@ -3,6 +3,7 @@ import { Route, Redirect, NavLink } from 'react-router-dom'
 import Popular from './popular/Popular'
 import RecentlyJoined from './recently-joined/RecentlyJoined'
 import SubNavLink from '../sub-nav-link/SubNavLink'
+import store from '../../store/store'
 
 const Developers = (props) => (
   <div id="developers">

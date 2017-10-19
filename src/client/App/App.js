@@ -4,6 +4,7 @@ import NavBar from '../components/navbar/NavBar'
 import Repositories from '../components/repositories/Repositories'
 import Developers from '../components/developers/Developers'
 import About from '../components/about/About'
+import GlobalFloatingButton from '../components/global-floating-button/GlobalFloatingButton'
 
 const basename = '/opensource'
 
@@ -17,6 +18,7 @@ const App = () => (
         <Route path="/developers" component={Developers} />
         <Route path="/about" component={About} />
       </div>
+      <GlobalFloatingButton />
     </div>
   </BrowserRouter>
 )

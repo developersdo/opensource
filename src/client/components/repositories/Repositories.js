@@ -14,9 +14,9 @@ const Repositories = (props) => (
       <SubNavLink to="/repositories/new">New</SubNavLink>
     </div>
     <Route exact path="/repositories" render={() => <Redirect to="/repositories/popular" />} />
-    <Route path="/repositories/popular" render={() => <Popular repos={store.repos} />} />
+    <Route path="/repositories/popular" component={Popular} />
     <Route path="/repositories/trending" component={Trending} />
-    <Route path="/repositories/new" render={() => <New repos={store.repos} />} />
+    <Route path="/repositories/new" component={New} />
   </div>
 )
 
