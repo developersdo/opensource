@@ -1,7 +1,8 @@
 import React from 'react'
-import ReactList from 'react-list'
-import DeveloperCard from './card/DeveloperCard'
 import classnames from 'classnames'
+import Loading from '../../loading/Loading'
+import DeveloperCard from './card/DeveloperCard'
+import InfiniteScroller from 'react-infinite-scroller'
 
 const style = {
   first: {
@@ -16,24 +17,45 @@ const style = {
   }
 }
 
-const DevelopersList = ({users}) => (
-  <div className="row">
-    <ReactList
-      itemRenderer={(index, key) => (
-        <div
-          key={key}
-          className="col s4"
-          style={style[['first', 'second', 'third'][index % 3]]}
+class DevelopersList extends React.Component {
+  state = {
+    hasMore: true,
+    page: 0,
+    users: [],
+  }
+  render() {
+    const { hasMore, users } = this.state
+    return (
+      <div className="row">
+        <InfiniteScroller
+          loadMore={() => this.loadMore()}
+          hasMore={hasMore}
+          loader={<Loading />}
         >
-          <DeveloperCard
-            user={users[index]}
-          />
-        </div>
-      )}
-      length={users.length}
-      type="uniform"
-    />
-  </div>
-)
+          {users.map((user, index) => (
+            <div
+              key={user.id}
+              className="col s4"
+              style={style[['first', 'second', 'third'][index % 3]]}
+            >
+              <DeveloperCard user={user} />
+            </div>
+          ))}
+        </InfiniteScroller>
+      </div>
+    )
+  }
+  loadMore() {
+    const { users } = this.props
+    const { users: usersInPage, page } = this.state
+    const pageSize = 12
+    const moreUsersInPage = [...usersInPage, ...users.slice(page * pageSize, (page * pageSize) + pageSize)]
+    this.setState({
+      page: page + 1,
+      users: moreUsersInPage,
+      hasMore: moreUsersInPage.length < users.length,
+    })
+  }
+}
 
 export default DevelopersList
