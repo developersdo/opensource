@@ -18,7 +18,7 @@ const style = {
   }
 }
 
-const RepositoryCard = ({repo, position}) => {
+const RepositoryCard = ({repo}) => {
   return (
     <div className="card hoverable">
       <div className="card-content">
@@ -34,7 +34,7 @@ const RepositoryCard = ({repo, position}) => {
       <div className="card-action">
         {repo.languages.length === 0
           ? '(no languages)'
-          : repo.languages.map((lang) => <span key={lang.name} className={lang.color} style={style.language}>{lang.name}</span>)
+          : repo.languages.map((lang, index) => <span key={index} className={lang.color} style={style.language}>{lang.name}</span>)
         }
       </div>
       <div className="card-action">

@@ -3923,7 +3923,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15, prop-types@^15.5.4, prop-types@^15.6.0:
+prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -4047,11 +4047,11 @@ react-dom@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-list@^0.8.8:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/react-list/-/react-list-0.8.8.tgz#de2cb768dd210fb3e4835b9277f158e9cd403078"
+react-infinite-scroller@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.0.15.tgz#9fad0127be540cb327ea6b0ecb98d164e1a1d3fb"
   dependencies:
-    prop-types "15"
+    prop-types "^15.5.8"
 
 react-router-dom@^4.2.2:
   version "4.2.2"
