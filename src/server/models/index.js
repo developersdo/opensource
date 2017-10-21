@@ -55,4 +55,19 @@ module.exports = {
   }, {
     timestamps: false
   }),
+  RepoChange: sequelize.define('repo_change', {
+    id: { type: Sequelize.INTEGER, primaryKey: true },
+    repoId: { type: Sequelize.STRING(200), references: { model: 'repo', key: 'id' } },
+    name: Sequelize.STRING(100),
+    description: Sequelize.STRING(200),
+    homepageUrl: Sequelize.STRING(200),
+    url: Sequelize.STRING(200),
+    languages: Sequelize.STRING(1000),
+    stargazers: Sequelize.INTEGER,
+    watchers: Sequelize.INTEGER,
+    forks: Sequelize.INTEGER,
+    createdAt: Sequelize.DATE,
+  }, {
+    timestamps: false
+  }),
 }
