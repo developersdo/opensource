@@ -56,6 +56,7 @@ module.exports = {
     timestamps: false
   }),
   RepoChange: sequelize.define('repo_change', {
+    id: { type: Sequelize.INTEGER, primaryKey: true },
     repoId: { type: Sequelize.STRING(200), references: { model: 'repo', key: 'id' } },
     name: Sequelize.STRING(100),
     description: Sequelize.STRING(200),

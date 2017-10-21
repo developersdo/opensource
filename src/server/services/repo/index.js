@@ -1,6 +1,6 @@
 const print = require('chalk-printer')
 
-const { Repo } = require('../../models')
+const { Repo, RepoChange } = require('../../models')
 
 module.exports = {
 
@@ -29,7 +29,7 @@ module.exports = {
                     || existingRepo.watchers !== repo.watchers.total
                     || existingRepo.forks !== repo.forks.total
                 ) {
-                  return Repo.create({
+                  return RepoChange.create({
                     repoId: existingRepo.id,
                     name: existingRepo.name,
                     description: existingRepo.description,
