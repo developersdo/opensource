@@ -58,7 +58,7 @@ module.exports = {
    * @return {Promise}
    */
   async updateUser(id, user) {
-    print.trace(`Update user with id ${id}...`)
+    print.trace(`Update user with id: ${id}...`)
 
     const original = await User.findById(id)
     if (!original) {
