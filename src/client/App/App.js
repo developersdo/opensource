@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
-import NavBar from '../components/nav-bar/NavBar'
-import Repositories from '../components/repositories/Repositories'
-import Developers from '../components/developers/Developers'
-import About from '../components/about/About'
-import GlobalFloatingButton from '../components/global-floating-button/GlobalFloatingButton'
-import PageViewTracker from '../components/page-view-tracker/PageViewTracker'
+import About from '~/pages/about/About'
+import NavBar from '~/components/nav-bar/NavBar'
+import Developers from '~/pages/developers/Developers'
+import Repositories from '~/pages/repositories/Repositories'
+import FloatingButton from '~/components/floating-button/FloatingButton'
+import PageViewTracker from '~/components/page-view-tracker/PageViewTracker'
 
 const basename = '/opensource'
 
@@ -20,7 +20,7 @@ const App = () => (
         <Route path="/developers" component={Developers} />
         <Route path="/about" component={About} />
       </div>
-      <GlobalFloatingButton />
+      <FloatingButton />
     </div>
   </BrowserRouter>
 )

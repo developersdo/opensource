@@ -1,7 +1,7 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
-import PopularLanguages from './popular-languages/PopularLanguages'
-import Statistics from './statistics/Statistics'
+import PopularLanguages from '~/pages/popular-languages/PopularLanguages'
+import Statistics from '~/pages/statistics/Statistics'
 
 const About = () => (
   <DocumentTitle title='About and Statistics – Dominican Open Source'>

@@ -5,9 +5,10 @@ const DefinePlugin = webpack.DefinePlugin
 const CommonsChunkPlugin =  webpack.optimize.CommonsChunkPlugin
 
 const pathTo = {
-  app: path.join(__dirname, '../src/client/root.js'),
+  app: path.join(__dirname, '../src/client/Root.js'),
   public: path.join(__dirname, '../public'),
-  index: path.join(__dirname, '../src/client/index.html')
+  index: path.join(__dirname, '../src/client/index.html'),
+  client: path.join(__dirname, '../src/client/')
 }
 
 module.exports = {
@@ -18,6 +19,11 @@ module.exports = {
     path: pathTo.public,
     filename: '[name].js',
     publicPath: '/opensource'
+  },
+  resolve: {
+    alias: {
+      '~': pathTo.client
+    }
   },
   module: {
     rules: [

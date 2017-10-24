@@ -1,8 +1,8 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
-import Loading from '../../loading/Loading'
-import store from '../../../store/store'
-import RepositoryList from '../list/List'
+import Loading from '~/components/loading/Loading'
+import store from '~/store/store'
+import RepositoryList from '~/components/repository-list/RepositoryList'
 import { orderBy } from 'lodash'
 
 class NewRepositories extends React.Component {
