@@ -1,14 +1,14 @@
-<h1 align=center>✨ Local Open Source Communities ✨</h1>
+<h1 align=center>
+<a href="https://developersdo.github.io/opensource">Dominican Open Source</a>
+</h1>
 
-This repository hosts the source code of the **http://developersdo.github.io/opensource** website.
-
-**Local open source communities** is an initiative to gather all possible public data about projects from the Dominican Republic in GitHub using the [GraphQL API](https://developer.github.com/v4/). Build and serve a public website showing all the local efforts that Dominicans are contributing toward open source.
+**Dominican Open Source** is an initiative to gather all possible public data about projects and their contributors related to the Dominican Republic in GitHub using the [GraphQL API](https://developer.github.com/v4/).
 
 ## Want to join?
 
 There are different ways to participate in this local effort:
 
- - You can include your GitHub users by adding the term “dominican” to your profile's location(dominicana is also accepted).
+ - You can include your GitHub users by adding the term “Dominican” to your profile's location. (Note: Dominicana is also accepted)
  - You can improve the code of the [public website](src/client) or [the scraper](src/server).
  - And if you don't code you can check the grammar, the UX, the graphic design, [report bugs](https://github.com/developersdo/opensource/issues/new) - it is up to you ;)
  

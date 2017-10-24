@@ -1,4 +1,5 @@
 import React from 'react'
+import { OutboundLink } from 'react-ga'
 
 const style = {
   avatar: {
@@ -19,10 +20,15 @@ const style = {
 const DeveloperCard = ({user}) => (
   <div className="card hoverable">
     <div className="card-content">
-      <a className="card-title truncate" target="_blank" href={user.githubUrl}>
+      <OutboundLink
+        className="card-title truncate"
+        target="_blank"
+        eventLabel={user.githubUrl}
+        to={user.githubUrl}
+      >
         <img className="circle" style={style.avatar} src={user.avatarUrl} />
         {user.name || user.login}
-      </a>
+      </OutboundLink>
       <p>Followed by: {user.followers}</p>
       <p>{user.description}</p>
     </div>
@@ -31,9 +37,14 @@ const DeveloperCard = ({user}) => (
       <span style={style.fact}>{user.forked} forks</span>
     </div>
     <div className="card-action truncate">
-      <a style={style.action} target="_blank" href={user.url}>
+      <OutboundLink
+        style={style.action}
+        target="_blank"
+        eventLabel={user.url}
+        to={user.url}
+      >
         {user.url}
-      </a>
+      </OutboundLink>
     </div>
   </div>
 )

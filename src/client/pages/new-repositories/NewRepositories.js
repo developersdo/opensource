@@ -1,7 +1,8 @@
 import React from 'react'
-import Loading from '../../loading/Loading'
-import store from '../../../store/store'
-import RepositoryList from '../list/List'
+import DocumentTitle from 'react-document-title'
+import Loading from '~/components/loading/Loading'
+import store from '~/store/store'
+import RepositoryList from '~/components/repository-list/RepositoryList'
 import { orderBy } from 'lodash'
 
 class NewRepositories extends React.Component {
@@ -38,7 +39,11 @@ class NewRepositories extends React.Component {
       return current
     }, {})
 
-    return <RepositoryList repos={orderedRepos} />
+    return (
+        <DocumentTitle title='New Repositories – Dominican Open Source'>
+          <RepositoryList repos={orderedRepos} />
+        </DocumentTitle>
+      )
   }
 }
 

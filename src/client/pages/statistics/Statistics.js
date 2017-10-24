@@ -1,7 +1,7 @@
 import React from 'react'
-import store from '../../../store/store'
-import Loading from '../../loading/Loading'
 import { map } from 'lodash'
+import store from '~/store/store'
+import Loading from '~/components/loading/Loading'
 
 class AboutStatistics extends React.Component {
   state = {

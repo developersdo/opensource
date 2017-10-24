@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter, matchPath } from 'react-router-dom'
-import NavBarItem from './navbar-item/NavBarItem'
+import NavBarItem from '~/components/nav-bar/navbar-item/NavBarItem'
 
 const NavBar = ({ location }) => (
   <nav className="blue darken-1">

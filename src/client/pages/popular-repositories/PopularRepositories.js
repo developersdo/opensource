@@ -1,8 +1,9 @@
 import React from 'react'
-import Loading from '../../loading/Loading'
-import store from '../../../store/store'
-import RepositoryList from '../list/List'
+import DocumentTitle from 'react-document-title'
 import { orderBy } from 'lodash'
+import store from '~/store/store'
+import Loading from '~/components/loading/Loading'
+import RepositoryList from '~/components/repository-list/RepositoryList'
 
 class PopularRepositories extends React.Component {
   state = {
@@ -33,7 +34,11 @@ class PopularRepositories extends React.Component {
       current.position = currentPosition++
     })
 
-    return <RepositoryList repos={orderedRepos} />
+    return (
+      <DocumentTitle title='Popular Repositories – Dominican Open Source'>
+        <RepositoryList repos={orderedRepos} />
+      </DocumentTitle>
+    )
   }
 }
 

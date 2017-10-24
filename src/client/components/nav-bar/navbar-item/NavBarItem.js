@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link, withRouter, matchPath } from 'react-router-dom'
 import classnames from 'classnames'
+import { Link, withRouter, matchPath } from 'react-router-dom'
 
 const NavBarItem = ({ to, children, location }) => {
   const active = !!matchPath(location.pathname, { path: to })

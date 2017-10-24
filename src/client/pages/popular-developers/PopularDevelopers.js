@@ -1,8 +1,9 @@
 import React from 'react'
-import Loading from '../../loading/Loading'
-import store from '../../../store/store'
-import DeveloperList from '../list/List'
+import DocumentTitle from 'react-document-title'
 import { orderBy } from 'lodash'
+import store from '~/store/store'
+import Loading from '~/components/loading/Loading'
+import DeveloperList from '~/components/developer-list/DeveloperList'
 
 class PopularDevelopers extends React.Component {
   state = {
@@ -27,7 +28,11 @@ class PopularDevelopers extends React.Component {
 
     const orderedUsers = orderBy(users, ['followers', 'name'], ['desc', 'asc'])
 
-    return <DeveloperList users={orderedUsers} />
+    return (
+      <DocumentTitle title='Popular Developers – Dominican Open Source'>
+        <DeveloperList users={orderedUsers} />
+      </DocumentTitle>
+    )
   }
 }
 
