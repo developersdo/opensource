@@ -8,7 +8,7 @@
 
 There are different ways to participate in this local effort:
 
- - You can include your GitHub users by adding the term “dominican” to your profile's location(dominicana is also accepted).
+ - You can include your GitHub users by adding the term “Dominican” to your profile's location. (Note: Dominicana is also accepted)
  - You can improve the code of the [public website](src/client) or [the scraper](src/server).
  - And if you don't code you can check the grammar, the UX, the graphic design, [report bugs](https://github.com/developersdo/opensource/issues/new) - it is up to you ;)
  
