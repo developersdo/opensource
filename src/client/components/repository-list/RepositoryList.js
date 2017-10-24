@@ -1,7 +1,7 @@
 import React from 'react'
-import RepositoryCard from './card/RepositoryCard'
 import InfiniteScroller from 'react-infinite-scroller'
-import Loading from '../../loading/Loading'
+import Loading from '~/components/loading/Loading'
+import RepositoryCard from '~/components/repository-list/repository-card/RepositoryCard'
 
 class RepositoriesList extends React.Component {
   state = {

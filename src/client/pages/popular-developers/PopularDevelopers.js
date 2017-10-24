@@ -1,11 +1,11 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
-import Loading from '../../loading/Loading'
-import store from '../../../store/store'
-import DeveloperList from '../list/List'
 import { orderBy } from 'lodash'
+import store from '~/store/store'
+import Loading from '~/components/loading/Loading'
+import DeveloperList from '~/components/developer-list/DeveloperList'
 
-class RecentlyJoinedDevelopers extends React.Component {
+class PopularDevelopers extends React.Component {
   state = {
     users: [],
     loading: true,
@@ -26,14 +26,14 @@ class RecentlyJoinedDevelopers extends React.Component {
       return <Loading />
     }
 
-    const orderedUsers = orderBy(users, ['createdAt', 'name'], ['desc', 'asc'])
+    const orderedUsers = orderBy(users, ['followers', 'name'], ['desc', 'asc'])
 
     return (
-      <DocumentTitle title='Recently Joined Developers – Dominican Open Source'>
+      <DocumentTitle title='Popular Developers – Dominican Open Source'>
         <DeveloperList users={orderedUsers} />
       </DocumentTitle>
     )
   }
 }
 
-export default RecentlyJoinedDevelopers
+export default PopularDevelopers

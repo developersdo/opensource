@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, Redirect, NavLink } from 'react-router-dom'
-import Popular from './popular/Popular'
-import Trending from './trending/Trending'
-import New from './new/New'
-import SubNavLink from '../sub-nav-link/SubNavLink'
-import store from '../../store/store'
+import New from '~/pages/new-repositories/NewRepositories'
+import store from '~/store/store'
+import Popular from '~/pages/popular-repositories/PopularRepositories'
+import Trending from '~/pages/trending-repositories/TrendingRepositories'
+import SubNavLink from '~/components/sub-nav-link/SubNavLink'
 
 const Repositories = (props) => (
   <div id="repositories">

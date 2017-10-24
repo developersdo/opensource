@@ -1,9 +1,9 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
-import Loading from '../../loading/Loading' 
-import store from '../../../store/store'
-import RepositoryList from '../list/List'
 import { orderBy } from 'lodash'
+import store from '~/store/store'
+import Loading from '~/components/loading/Loading'
+import RepositoryList from '~/components/repository-list/RepositoryList'
 
 class PopularRepositories extends React.Component {
   state = {

@@ -1,8 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
-import Loading from '../../loading/Loading'
-import DeveloperCard from './card/DeveloperCard'
 import InfiniteScroller from 'react-infinite-scroller'
+import Loading from '~/components/loading/Loading'
+import DeveloperCard from '~/components/developer-list/developer-card/DeveloperCard'
 
 const style = {
   first: {

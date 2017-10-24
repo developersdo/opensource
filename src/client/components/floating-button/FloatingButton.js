@@ -1,6 +1,6 @@
 import React from 'react'
 
-const GlobalFloatingButton = () => (
+const FloatingButton = () => (
   <div className="fixed-action-btn">
     <a className="btn-floating btn-large red darken-2">
       <i className="large material-icons">more_vert</i>
@@ -32,4 +32,4 @@ const GlobalFloatingButton = () => (
   </div>
 )
 
-export default GlobalFloatingButton
+export default FloatingButton
