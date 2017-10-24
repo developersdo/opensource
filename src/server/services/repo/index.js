@@ -1,3 +1,4 @@
+const { isEqual, merge, pick } = require('lodash')
 const print = require('chalk-printer')
 
 const { Repo, RepoChange } = require('../../models')
@@ -5,72 +6,22 @@ const { Repo, RepoChange } = require('../../models')
 module.exports = {
 
   /**
-   * Create one or more repos. Any existing repos identified by their name will be skipped.
+   * Create or update one or more repos.
    *
    * @param {Array} repos The array of repositories.
    * @return {Promise} A promise.
    */
   createOrUpdateRepos(repos = []) {
-    print.trace(`Create ${repos.length} repos...`)
+    print.trace(`Create or update ${repos.length} repos...`)
 
     return Promise.all(
-      repos.map((repo) => {
-        return Repo.findById(repo.id)
-          .then((existingRepo) => {
-            if (existingRepo) {
-              const languages = repo.languages.nodes.map(l => l.name.toLowerCase()).join(' ');
-              return Promise.resolve().then(function () {
-                if (
-                    existingRepo.name !== repo.name
-                    || existingRepo.description !== repo.description
-                    || existingRepo.url !== repo.url
-                    || existingRepo.languages !== languages
-                    || existingRepo.stargazers !== repo.stargazers.total
-                    || existingRepo.watchers !== repo.watchers.total
-                    || existingRepo.forks !== repo.forks.total
-                ) {
-                  return RepoChange.create({
-                    repoId: existingRepo.id,
-                    name: existingRepo.name,
-                    description: existingRepo.description,
-                    url: existingRepo.url,
-                    languages: existingRepo.languages,
-                    stargazers: existingRepo.stargazers,
-                    watchers: existingRepo.watchers,
-                    forks: existingRepo.forks,
-                    createdAt: new Date()
-                  })
-                }
-              }).then(function () {
-                return Repo.update({
-                  name: repo.name,
-                  description: repo.description,
-                  url: repo.url,
-                  languages: languages,
-                  stargazers: repo.stargazers.total,
-                  watchers: repo.watchers.total,
-                  forks: repo.forks.total,
-                  createdAt: new Date(repo.createdAt),
-                  scrapedAt: new Date(),
-                }, {
-                  where: { id: repo.id }
-                })
-              })
-            } else {
-              return Repo.create({
-                id: repo.id,
-                name: repo.name,
-                description: repo.description,
-                url: repo.url,
-                languages: repo.languages.nodes.map(l => l.name.toLowerCase()).join(' '),
-                stargazers: repo.stargazers.total,
-                watchers: repo.watchers.total,
-                forks: repo.forks.total,
-                createdAt: new Date(repo.createdAt),
-                scrapedAt: new Date(),
-              })
-            }
-          })
+      repos.map(async (repo) => {
+        const exist = await Repo.find({ where: { originalId: repo.originalId } })
+        if (exist) {
+          return await this.updateRepo(exist.id, repo)
+        } else {
+          return await Repo.create(repo)
+        }
       })
     )
   },
@@ -96,5 +47,56 @@ module.exports = {
     }
 
     return Repo.findAll(opts)
+  },
+
+  /**
+   * Try to update a repo in the database.
+   * The repo will only be updated if a change was detected.
+   * If a change was detected a repo change record will be also created.
+   * @param {Number} id The id of the repo to update.
+   * @param {Object} repo The repo to update.
+   * @return {Promise}
+   */
+  async updateRepo(id, repo) {
+    print.trace(`Update repo with id: ${id}...`)
+
+    const original = await Repo.findById(id)
+    if (!original) {
+      throw new Error('No existing repo.')
+    }
+
+    if (this.isDifferentRepo(original, repo)) {
+      await this.createRepoChange(original, repo)
+      const updates = pick(repo, ['name', 'description', 'homepageUrl', 'url', 'languages', 'stargazers', 'watchers', 'forks'])
+      return await Repo.update(updates, { where: { originalId: repo.originalId } })
+    }
+
+    print.trace(`Nothing to update for repo with name: ${repo.name}`)
+  },
+
+  /**
+   * Indicates if two given repos are different.
+   * @param {Object} a A repo.
+   * @param {Object} b A repo.
+   */
+  isDifferentRepo(a, b) {
+    const fields = ['name', 'description', 'homepageUrl', 'url', 'languages', 'stargazers', 'watchers', 'forks']
+    return (!a || !b) || fields.some((field) => a[field] !== b[field])
+  },
+
+  /**
+   * Create a repo change based on the original and the changed repo.
+   * @param {Object} original The original repo.
+   * @param {Object} changed The changed repo.
+   * @return {Promise}
+   */
+  async createRepoChange(original, changed) {
+    const change = pick(changed, ['name', 'description', 'homepageUrl', 'url', 'languages'])
+    change.stargazers = changed.stargazers - original.stargazers
+    change.watchers = changed.watchers - original.watchers
+    change.forks = changed.forks - original.forks
+    change.repoId = original.id
+    change.createdAt = new Date()
+    return await RepoChange.create(change)
   }
 }

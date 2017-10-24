@@ -23,7 +23,8 @@ module.exports = {
     timestamps: false
   }),
   Repo: sequelize.define('repo', {
-    id: { type: Sequelize.STRING(200), primaryKey: true },
+    id: { type: Sequelize.INTEGER, primaryKey: true },
+    originalId: { type: Sequelize.STRING(100), unique: 'reposOriginalIdIndex' },
     name: Sequelize.STRING(100),
     description: Sequelize.STRING(200),
     homepageUrl: Sequelize.STRING(200),
@@ -57,7 +58,7 @@ module.exports = {
   }),
   RepoChange: sequelize.define('repo_change', {
     id: { type: Sequelize.INTEGER, primaryKey: true },
-    repoId: { type: Sequelize.STRING(200), references: { model: 'repo', key: 'id' } },
+    repoId: { type: Sequelize.INTEGER, references: { model: 'repo', key: 'id' } },
     name: Sequelize.STRING(100),
     description: Sequelize.STRING(200),
     homepageUrl: Sequelize.STRING(200),

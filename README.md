@@ -29,11 +29,11 @@ That's it! Happy coding.
 ### Scripts
 
  - `yarn scrape` – scrape for all GitHub users and repos as configured.
-   - `yarn scrape --only=users` – scrape for all GitHub repos.
-   - `yarn scrape --only=repos` – scrape for all GitHub users.
+   - `yarn scrape -- --only=users` – scrape for all GitHub repos.
+   - `yarn scrape -- --only=repos` – scrape for all GitHub users.
  - `yarn generate-data` – generate GitHub users and repos for front-end usage.
-   - `yarn generate-data --only users` – generate JSON data for users.
-   - `yarn generate-data --only repos` – generate JSON data for repos.
+   - `yarn generate-data -- --only users` – generate JSON data for users.
+   - `yarn generate-data -- --only repos` – generate JSON data for repos.
  - `yarn sequelize` – to use sequelize, pass cli args as follow: `yarn sequelize -- db:migrate`.
    - `yarn sequelize -- db:migrate` – Run all pending database migrations.
    - `yarn sequelize -- db:migrate:undo` – Rollback last database migration.
