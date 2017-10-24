@@ -1,5 +1,6 @@
 import React from 'react'
-import Loading from '../../loading/Loading'
+import DocumentTitle from 'react-document-title'
+import Loading from '../../loading/Loading' 
 import store from '../../../store/store'
 import RepositoryList from '../list/List'
 import { orderBy } from 'lodash'
@@ -33,7 +34,11 @@ class PopularRepositories extends React.Component {
       current.position = currentPosition++
     })
 
-    return <RepositoryList repos={orderedRepos} />
+    return (
+      <DocumentTitle title='Popular Repositories – Dominican Open Source'>
+        <RepositoryList repos={orderedRepos} />
+      </DocumentTitle>
+    )
   }
 }
 
