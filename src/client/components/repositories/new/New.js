@@ -1,4 +1,5 @@
 import React from 'react'
+import DocumentTitle from 'react-document-title'
 import Loading from '../../loading/Loading'
 import store from '../../../store/store'
 import RepositoryList from '../list/List'
@@ -38,7 +39,11 @@ class NewRepositories extends React.Component {
       return current
     }, {})
 
-    return <RepositoryList repos={orderedRepos} />
+    return (
+        <DocumentTitle title='New Repositories – Dominican Open Source'>
+          <RepositoryList repos={orderedRepos} />
+        </DocumentTitle>
+      )
   }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import DocumentTitle from 'react-document-title'
 import Loading from '../../loading/Loading'
 import store from '../../../store/store'
 import DeveloperList from '../list/List'
@@ -27,7 +28,11 @@ class PopularDevelopers extends React.Component {
 
     const orderedUsers = orderBy(users, ['followers', 'name'], ['desc', 'asc'])
 
-    return <DeveloperList users={orderedUsers} />
+    return (
+      <DocumentTitle title='Popular Developers – Dominican Open Source'>
+        <DeveloperList users={orderedUsers} />
+      </DocumentTitle>
+    )
   }
 }
 
