@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlPlugin = require('html-webpack-plugin')
+const FaviconsPlugin = require('favicons-webpack-plugin')
 const DefinePlugin = webpack.DefinePlugin
 const CommonsChunkPlugin =  webpack.optimize.CommonsChunkPlugin
 
@@ -8,7 +9,8 @@ const pathTo = {
   app: path.join(__dirname, '../src/client/Root.js'),
   public: path.join(__dirname, '../public'),
   index: path.join(__dirname, '../src/client/index.html'),
-  client: path.join(__dirname, '../src/client/')
+  client: path.join(__dirname, '../src/client/'),
+  logo: path.join(__dirname, '../src/client/images/logo.png')
 }
 
 module.exports = {
@@ -48,7 +50,7 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    new HtmlWebpackPlugin({
+    new HtmlPlugin({
       template: pathTo.index,
       inject: 'body',
       hash: true,
@@ -57,7 +59,8 @@ module.exports = {
     new CommonsChunkPlugin({
       name: 'vendor',
       minChunks: (module) => /node_modules/.test(module.context),
-    })
+    }),
+    new FaviconsPlugin(pathTo.logo)
   ],
   devServer: {
     contentBase: pathTo.public,
