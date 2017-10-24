@@ -1,4 +1,5 @@
 import React from 'react'
+import { OutboundLink } from 'react-ga'
 
 const style = {
   avatar: {
@@ -37,14 +38,24 @@ const RepositoryCard = ({repo}) => {
           : repo.languages.map((lang, index) => <span key={index} className={lang.color} style={style.language}>{lang.name}</span>)
         }
       </div>
-      <div className="card-action">
-        <a style={style.action} target="_blank" href={repo.user.githubUrl}>
+      <div className="card-action truncate">
+        <OutboundLink
+          style={style.action}
+          target="_blank"
+          eventLabel={repo.user.githubUrl}
+          to={repo.user.githubUrl}
+        >
           <img className="circle" style={style.avatar} src={repo.user.avatarUrl} />
           {repo.user.name || repo.user.login}
-        </a>
-        <a style={style.action} target="_blank" href={repo.url}>
+        </OutboundLink>
+        <OutboundLink
+          style={style.action}
+          target="_blank"
+          eventLabel={repo.url}
+          to={repo.url}
+        >
           <i className="material-icons left">link</i>GitHub Project
-        </a>
+        </OutboundLink>
       </div>
     </div>
   )
