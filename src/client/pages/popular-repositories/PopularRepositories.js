@@ -34,7 +34,7 @@ class PopularRepositories extends React.Component {
     }
 
     return (
-      <DocumentTitle title='Popular Repositories – Dominican Open Source'>
+      <DocumentTitle title="Popular Repositories – Dominican Open Source">
         <div>
           <Filter onChange={(value) => this.filterChanged(value)} />
           <RepositoryList key={filterIteration} repos={filteredRepos} />

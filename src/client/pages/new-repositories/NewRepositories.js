@@ -34,7 +34,7 @@ class NewRepositories extends React.Component {
     }
 
     return (
-        <DocumentTitle title='New Repositories – Dominican Open Source'>
+        <DocumentTitle title="New Repositories – Dominican Open Source">
           <div>
             <Filter onChange={(value) => this.filterChanged(value)} />
             <RepositoryList key={filterIteration} repos={filteredRepos} />

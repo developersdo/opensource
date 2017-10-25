@@ -29,7 +29,7 @@ class RecentlyJoinedDevelopers extends React.Component {
     const orderedUsers = orderBy(users, ['createdAt', 'name'], ['desc', 'asc'])
 
     return (
-      <DocumentTitle title='Recently Joined Developers – Dominican Open Source'>
+      <DocumentTitle title="Recently Joined Developers – Dominican Open Source">
         <DeveloperList users={orderedUsers} />
       </DocumentTitle>
     )

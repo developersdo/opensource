@@ -5,7 +5,7 @@ import PopularLanguages from '~/pages/popular-languages/PopularLanguages'
 import Statistics from '~/pages/statistics/Statistics'
 
 const About = () => (
-  <DocumentTitle title='About and Statistics – Dominican Open Source'>
+  <DocumentTitle title="About and Statistics – Dominican Open Source">
     <div id="about">
       <h5>About this website</h5>
       <p>

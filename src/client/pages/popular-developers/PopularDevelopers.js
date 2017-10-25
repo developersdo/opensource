@@ -29,7 +29,7 @@ class PopularDevelopers extends React.Component {
     const orderedUsers = orderBy(users, ['followers', 'name'], ['desc', 'asc'])
 
     return (
-      <DocumentTitle title='Popular Developers – Dominican Open Source'>
+      <DocumentTitle title="Popular Developers – Dominican Open Source">
         <DeveloperList users={orderedUsers} />
       </DocumentTitle>
     )
