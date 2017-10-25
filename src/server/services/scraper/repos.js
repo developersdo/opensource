@@ -39,7 +39,7 @@ module.exports = {
       .then((response) => {
 
         // Store repos.
-        const repos = response.data.search.nodes
+        const repos = this.transform(response)
         return srv.repo.createOrUpdateRepos(repos)
           .then(() => {
 
@@ -48,5 +48,38 @@ module.exports = {
             return hasNextPage ? this.scrapeReposFromUsers(users, endCursor) : Promise.resolve()
           })
       })
+  },
+
+  /**
+   * Transform a response into repo record object ready to be inserted.
+   * @param {Object} response The response.
+   * @return {Array}
+   */
+  transform(response) {
+    return response.data.search.nodes.map((node) => ({
+      originalId: node.id,
+      name: node.name,
+      description: node.description,
+      homepageUrl: node.homepageUrl,
+      url: node.url,
+      languages: this.transformLanguages(node.languages),
+      stargazers: node.stargazers ? node.stargazers.total : 0,
+      watchers: node.watchers ? node.watchers.total : 0,
+      forks: node.forks ? node.forks.total : 0,
+      createdAt: new Date(node.createdAt),
+      scrapedAt: new Date(),
+      isPrivate: node.isPrivate
+    }))
+  },
+
+  /**
+   * Transform a languages response into a string.
+   * @param {Object} languages
+   * @return {String}
+   */
+  transformLanguages(languages) {
+    return languages.nodes.map((node) => node.name.toLowerCase())
+      .filter((name) => !!name)
+      .join(' ')
   }
 }
