@@ -5,7 +5,7 @@ import store from '~/store/store'
 import Filter from '~/components/filter/Filter'
 import Loading from '~/components/loading/Loading'
 import RepositoryList from '~/components/repository-list/RepositoryList'
-import { escapeRegExp } from '~/utils'
+import utils from '~/utils'
 
 class NewRepositories extends React.Component {
   state = {
@@ -43,7 +43,7 @@ class NewRepositories extends React.Component {
       )
   }
   filterChanged(value) {
-    const matcher = new RegExp(escapeRegExp(value), 'i')
+    const matcher = new RegExp(utils.escapeRegExp(value), 'i')
     const { repos } = this.state
     const filteredRepos = filter(repos, (repo) => {
       return matcher.test(repo.name) || matcher.test(repo.description) || matcher.test(repo.user.name)

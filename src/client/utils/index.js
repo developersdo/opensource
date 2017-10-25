@@ -5,7 +5,7 @@ const utils = {
    * @return {String}
    */
   escapeRegExp(str) {
-    return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
+    return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
   }
 }
 
