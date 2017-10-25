@@ -5,6 +5,7 @@ import store from '~/store/store'
 import Filter from '~/components/filter/Filter'
 import Loading from '~/components/loading/Loading'
 import RepositoryList from '~/components/repository-list/RepositoryList'
+import { escapeRegExp } from '~/utils'
 
 class PopularRepositories extends React.Component {
   state = {
@@ -42,9 +43,7 @@ class PopularRepositories extends React.Component {
     )
   }
   filterChanged(value) {
-    // Escape RegExp special characters.
-    value = value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
-    const matcher = new RegExp(value, 'i')
+    const matcher = new RegExp(escapeRegExp(value), 'i')
     const { repos } = this.state
     const filteredRepos = filter(repos, (repo) => {
       return matcher.test(repo.name) || matcher.test(repo.description) || matcher.test(repo.user.name)
