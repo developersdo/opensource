@@ -6,7 +6,7 @@ import SubNavLink from '~/components/sub-nav-link/SubNavLink'
 import store from '~/store/store'
 
 const Developers = (props) => (
-  <div id="developers">
+  <div>
     <div className="row center-align">
       <SubNavLink to="/developers/popular">Popular</SubNavLink>
       <SubNavLink to="/developers/recently-joined">Recently Joined</SubNavLink>
