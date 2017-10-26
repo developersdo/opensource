@@ -1,13 +1,16 @@
 import React from 'react'
-import InfiniteScroller from 'react-infinite-scroller'
 import { filter } from 'lodash'
 import utils from '~/utils'
 import Filter from '~/components/filter/Filter'
 import InfiniteScroll from '~/components/infinite-scroll/InfiniteScroll'
 import RepositoryCard from '~/components/repository-list/repository-card/RepositoryCard'
 
-class RepositoriesList extends React.Component {
+/**
+ * The RepositoryList object class.
+ */
+class RepositoryList extends React.Component {
 
+  // Initial state.
   state = {
     filteredRepos: this.props.repos
   }
@@ -37,6 +40,10 @@ class RepositoriesList extends React.Component {
     )
   }
 
+  /**
+   * Handle filter value changes.
+   * @param {String} value The new filter value.
+   */
   filterChanged(value) {
     const { repos } = this.props
 
@@ -53,4 +60,4 @@ class RepositoriesList extends React.Component {
   }
 }
 
-export default RepositoriesList
+export default RepositoryList

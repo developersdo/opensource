@@ -1,7 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
-import InfiniteScroller from 'react-infinite-scroller'
-import Loading from '~/components/loading/Loading'
+import { filter } from 'lodash'
+import utils from '~/utils'
+import Filter from '~/components/filter/Filter'
+import InfiniteScroll from '~/components/infinite-scroll/InfiniteScroll'
 import DeveloperCard from '~/components/developer-list/developer-card/DeveloperCard'
 
 const style = {
@@ -17,22 +19,32 @@ const style = {
   }
 }
 
-class DevelopersList extends React.Component {
+/**
+ * The DeveloperList object class.
+ */
+class DeveloperList extends React.Component {
+
+  // Initial state.
   state = {
-    hasMore: true,
-    page: 0,
+    filteredUsers: this.props.users
+  }
+
+  static defaultProps = {
     users: [],
   }
+
+  /**
+   * Render this component.
+   */
   render() {
-    const { hasMore, users } = this.state
+    const { filteredUsers } = this.state
     return (
       <div className="row">
-        <InfiniteScroller
-          loadMore={() => this.loadMore()}
-          hasMore={hasMore}
-          loader={<Loading />}
-        >
-          {users.map((user, index) => (
+        <Filter onChange={(value) => this.filterChanged(value)} />
+        <InfiniteScroll
+          size={15}
+          items={filteredUsers}
+          render={(user, index) => (
             <div
               key={user.id}
               className="col s4"
@@ -40,22 +52,30 @@ class DevelopersList extends React.Component {
             >
               <DeveloperCard user={user} />
             </div>
-          ))}
-        </InfiniteScroller>
+          )}
+        />
       </div>
     )
   }
-  loadMore() {
+
+  /**
+   * Handle filter value changes.
+   * @param {String} value The new filter value.
+   */
+  filterChanged(value) {
     const { users } = this.props
-    const { users: usersInPage, page } = this.state
-    const pageSize = 12
-    const moreUsersInPage = [...usersInPage, ...users.slice(page * pageSize, (page * pageSize) + pageSize)]
-    this.setState({
-      page: page + 1,
-      users: moreUsersInPage,
-      hasMore: moreUsersInPage.length < users.length,
+
+    // Filter users.
+    const matcher = new RegExp(utils.escapeRegExp(value), 'i')
+    const filteredUsers = filter(users, (user) => {
+      return matcher.test(user.name)
     })
+
+    // Update the state.
+    this.setState((state) => ({
+      filteredUsers,
+    }))
   }
 }
 
-export default DevelopersList
+export default DeveloperList
