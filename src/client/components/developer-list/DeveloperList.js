@@ -69,9 +69,10 @@ class DeveloperList extends React.Component {
     const { users } = this.props
 
     // Filter users.
-    const matcher = new RegExp(utils.escapeRegExp(value), 'i')
+    const query = utils.unicodeNormalize(value)
+    const matcher = new RegExp(utils.escapeRegExp(query), 'i')
     const filteredUsers = filter(users, (user) => {
-      return matcher.test(user.name)
+      return matcher.test(user.normalizedName)
     })
 
     // Update the state.
