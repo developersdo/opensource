@@ -40,7 +40,10 @@ class DeveloperList extends React.Component {
     const { filteredUsers } = this.state
     return (
       <div className="row">
-        <Filter onChange={(value) => this.filterChanged(value)} />
+        <Filter
+          placeholder="Filter developer by name..."
+          onChange={(value) => this.filterChanged(value)}
+        />
         <InfiniteScroll
           size={15}
           items={filteredUsers}

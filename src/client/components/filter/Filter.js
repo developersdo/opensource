@@ -8,14 +8,20 @@ const style = {
 }
 
 class Filter extends React.Component {
+
+  /**
+   * Render this component.
+   */
   render() {
+    const { placeholder } = this.props
+
     return (
       <div className="row">
         <div className="input-field col s12 m12 l6 offset-l3">
           <input
             className="validate"
             style={style.input}
-            placeholder="Filter repositories by name or author ..."
+            placeholder={placeholder}
             type="text"
             onChange={(event) => this.filterChanged(event.target.value)}
           />
@@ -23,6 +29,7 @@ class Filter extends React.Component {
       </div>
     )
   }
+
   filterChanged(value) {
     const { onChange } = this.props
     onChange.call(null, value)
