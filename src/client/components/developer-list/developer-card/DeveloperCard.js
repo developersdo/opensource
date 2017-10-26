@@ -40,7 +40,7 @@ const DeveloperCard = ({user}) => (
       <OutboundLink
         style={style.action}
         target="_blank"
-        eventLabel={user.url}
+        eventLabel={user.url || ''}
         to={user.url}
       >
         {user.url}
