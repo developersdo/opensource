@@ -1,41 +1,55 @@
 import React from 'react'
 import InfiniteScroller from 'react-infinite-scroller'
-import Loading from '~/components/loading/Loading'
+import { filter } from 'lodash'
+import utils from '~/utils'
+import Filter from '~/components/filter/Filter'
+import InfiniteScroll from '~/components/infinite-scroll/InfiniteScroll'
 import RepositoryCard from '~/components/repository-list/repository-card/RepositoryCard'
 
 class RepositoriesList extends React.Component {
+
   state = {
-    hasMore: true,
-    page: 0,
+    filteredRepos: this.props.repos
+  }
+
+  static defaultProps = {
     repos: [],
   }
+
+  /**
+   * Render this component.
+   */
   render() {
-    const { hasMore, repos } = this.state
+    const { filteredRepos } = this.state
     return (
-      <InfiniteScroller
-        loadMore={() => this.loadMore()}
-        hasMore={hasMore}
-        loader={<Loading/>}
-      >
-        {repos.map((repo) => (
-          <RepositoryCard
-            key={repo.id}
-            repo={repo}
-          />
-        ))}
-      </InfiniteScroller>
+      <div>
+        <Filter onChange={(value) => this.filterChanged(value)} />
+        <InfiniteScroll
+          items={filteredRepos}
+          render={(repo) => (
+            <RepositoryCard
+              key={repo.id}
+              repo={repo}
+            />
+          )}
+        />
+      </div>
     )
   }
-  loadMore() {
+
+  filterChanged(value) {
     const { repos } = this.props
-    const { repos: reposInPage, page } = this.state
-    const pageSize = 10
-    const moreReposInPage = [...reposInPage, ...repos.slice(page * pageSize, (page * pageSize) + pageSize)]
-    this.setState({
-      page: page + 1,
-      repos: moreReposInPage,
-      hasMore: moreReposInPage.length < repos.length,
+
+    // Filter repos.
+    const matcher = new RegExp(utils.escapeRegExp(value), 'i')
+    const filteredRepos = filter(repos, (repo) => {
+      return matcher.test(repo.name) || matcher.test(repo.description) || matcher.test(repo.user.name)
     })
+
+    // Update the state.
+    this.setState((state) => ({
+      filteredRepos,
+    }))
   }
 }
 
