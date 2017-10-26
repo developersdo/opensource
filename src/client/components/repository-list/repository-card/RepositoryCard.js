@@ -16,14 +16,20 @@ const style = {
     padding: '0 10px',
     marginRight: 10,
     borderRadius: 5
-  }
+  },
+  cardTitle: {
+    wordWrap: 'break-word',
+  },
+  cardAction: {
+    whiteSpace: 'initial',
+  },
 }
 
 const RepositoryCard = ({repo}) => {
   return (
     <div className="card hoverable">
       <div className="card-content">
-        <div className="card-title">
+        <div className="card-title" style={style.cardTitle}>
           {repo.position && <strong style={{ marginRight: 20 }}>#{repo.position}</strong>}
           {repo.name}
           <span style={{ float: 'right' }}>
@@ -38,7 +44,7 @@ const RepositoryCard = ({repo}) => {
           : repo.languages.map((lang, index) => <span key={index} className={lang.color} style={style.language}>{lang.name}</span>)
         }
       </div>
-      <div className="card-action truncate">
+      <div className="card-action truncate" style={style.cardAction}>
         <OutboundLink
           style={style.action}
           target="_blank"
