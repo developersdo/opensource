@@ -1,5 +1,6 @@
 import 'isomorphic-fetch'
 import { merge, find, compact, orderBy } from 'lodash'
+import utils from '~/utils'
 
 // This is needed because I haven't figured out how to tell webpack-dev-server to
 // serve the `public` directory under `/opensource`. Therefore the data is served
@@ -84,6 +85,8 @@ function transformRepo(repo) {
     return store.getUsers()
       .then((users) => {
         return resolve(merge(repo, {
+          normalizedName: utils.unicodeNormalize(repo.name),
+          normalizedDescription: utils.unicodeNormalize(repo.description),
           languages: parseLanguages(repo.languages),
           user: find(users.items, { login: repo.name.split('/')[0] }),
           createdAt: new Date(repo.createdAt),
@@ -95,6 +98,7 @@ function transformRepo(repo) {
 
 function transformUser(user) {
   return merge(user, {
+    normalizedName: utils.unicodeNormalize(user.name),
     githubUrl: `https://github.com/${user.login}`
   })
 }

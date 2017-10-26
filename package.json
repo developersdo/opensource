@@ -23,7 +23,8 @@
     "react-ga": "^2.3.5",
     "react-infinite-scroller": "^1.0.15",
     "react-router-dom": "^4.2.2",
-    "sequelize": "^4.2.0"
+    "sequelize": "^4.2.0",
+    "unorm": "^1.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

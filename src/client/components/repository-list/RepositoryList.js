@@ -52,9 +52,10 @@ class RepositoryList extends React.Component {
     const { repos } = this.props
 
     // Filter repos.
-    const matcher = new RegExp(utils.escapeRegExp(value), 'i')
+    const query = utils.unicodeNormalize(value)
+    const matcher = new RegExp(utils.escapeRegExp(query), 'i')
     const filteredRepos = filter(repos, (repo) => {
-      return matcher.test(repo.name) || matcher.test(repo.description) || matcher.test(repo.user.name)
+      return matcher.test(repo.normalizedName) || matcher.test(repo.normalizedDescription) || matcher.test(repo.user.normalizedName)
     })
 
     // Update the state.
