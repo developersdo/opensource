@@ -24,9 +24,13 @@ class RepositoryList extends React.Component {
    */
   render() {
     const { filteredRepos } = this.state
+
     return (
       <div>
-        <Filter onChange={(value) => this.filterChanged(value)} />
+        <Filter
+          placeholder="Filter repositories by name or author..."
+          onChange={(value) => this.filterChanged(value)}
+        />
         <InfiniteScroll
           items={filteredRepos}
           render={(repo) => (
