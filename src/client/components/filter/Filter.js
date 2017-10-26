@@ -11,7 +11,7 @@ class Filter extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="input-field col s6 offset-s3">
+        <div className="input-field col s12 m12 l6 offset-l3">
           <input
             className="validate"
             style={style.input}

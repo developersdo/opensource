@@ -5,8 +5,8 @@ import PopularLanguages from '~/pages/popular-languages/PopularLanguages'
 import Statistics from '~/pages/statistics/Statistics'
 
 const About = () => (
-  <DocumentTitle title='About and Statistics – Dominican Open Source'>
-    <div id="about">
+  <DocumentTitle title="About and Statistics – Dominican Open Source">
+    <div>
       <h5>About this website</h5>
       <p>
         <strong>Dominican Open Source</strong> is an initiative to gather all possible public data about projects in GitHub from developers of the Dominican Republic using the

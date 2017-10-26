@@ -7,15 +7,13 @@ import Trending from '~/pages/trending-repositories/TrendingRepositories'
 import SubNavLink from '~/components/sub-nav-link/SubNavLink'
 
 const Repositories = (props) => (
-  <div id="repositories">
+  <div>
     <div className="row center-align">
       <SubNavLink to="/repositories/popular">Popular</SubNavLink>
-      <SubNavLink to="/repositories/trending">Trending</SubNavLink>
       <SubNavLink to="/repositories/new">New</SubNavLink>
     </div>
     <Route exact path="/repositories" render={() => <Redirect to="/repositories/popular" />} />
     <Route path="/repositories/popular" component={Popular} />
-    <Route path="/repositories/trending" component={Trending} />
     <Route path="/repositories/new" component={New} />
   </div>
 )
