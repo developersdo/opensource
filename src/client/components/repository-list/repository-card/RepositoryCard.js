@@ -25,7 +25,15 @@ const RepositoryCard = ({repo}) => {
       <div className="card-content">
         <div className="card-title">
           {repo.position && <strong style={{ marginRight: 20 }}>#{repo.position}</strong>}
-          {repo.name}
+          <OutboundLink
+            style={style.action}
+            target="_blank"
+            eventLabel={repo.url}
+            to={repo.url}
+          >
+            {repo.name}
+          </OutboundLink>
+
           <span style={{ float: 'right' }}>
             <i className="material-icons">star</i>{repo.stargazers}
           </span>
