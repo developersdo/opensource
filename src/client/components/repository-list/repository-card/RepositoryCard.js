@@ -11,11 +11,14 @@ const style = {
   action: {
     display: 'inline-block',
   },
+  languages: {
+    paddingBottom: 6,
+  },
   language: {
     display: 'inline-block',
     padding: '0 10px',
-    marginRight: 10,
-    borderRadius: 5
+    margin: '0 10px 10px 0',
+    borderRadius: 5,
   },
   cardTitle: {
     wordWrap: 'break-word',
@@ -30,17 +33,17 @@ const RepositoryCard = ({repo}) => {
     <div className="card hoverable">
       <div className="card-content">
         <div className="card-title" style={style.cardTitle}>
-          {repo.position && <strong style={{ marginRight: 20 }}>#{repo.position}</strong>}
-          {repo.name}
           <span style={{ float: 'right' }}>
             <i className="material-icons">star</i>{repo.stargazers}
           </span>
+          {repo.position && <strong style={{ marginRight: 20 }}>#{repo.position}</strong>}
+          {repo.name}
         </div>
         <p>{repo.description}</p>
       </div>
-      <div className="card-action">
+      <div className="card-action" style={style.languages}>
         {repo.languages.length === 0
-          ? '(no languages)'
+          ? <span style={style.language}>(no languages)</span>
           : repo.languages.map((lang, index) => <span key={index} className={lang.color} style={style.language}>{lang.name}</span>)
         }
       </div>
