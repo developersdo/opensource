@@ -26,7 +26,7 @@ class Filter extends React.Component {
             type="search"
             onChange={(event) => this.filterChanged(event.target.value)}
           />
-          <label className="label-icon" for="search">
+          <label className="label-icon" htmlFor="search">
             <i className="material-icons">search</i>
           </label>
         </div>

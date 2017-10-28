@@ -84,11 +84,16 @@ function transformRepo(repo) {
   return new Promise((resolve, reject) => {
     return store.getUsers()
       .then((users) => {
+        let owner = find(users.items, { login: repo.name.split('/')[0] })
+        if (!owner) {
+          owner = {}
+          console.warn(`Could not find user by login: ${repo.name}, probably the user changed his login. More details at: https://github.com/developersdo/opensource/issues/89`)
+        }
         return resolve(merge(repo, {
           normalizedName: utils.unicodeNormalize(repo.name),
           normalizedDescription: utils.unicodeNormalize(repo.description),
           languages: parseLanguages(repo.languages),
-          user: find(users.items, { login: repo.name.split('/')[0] }),
+          user: owner,
           createdAt: new Date(repo.createdAt),
         }))
       })
