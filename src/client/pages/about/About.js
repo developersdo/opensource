@@ -11,7 +11,7 @@ const About = () => (
       <p>
         <strong>Dominican Open Source</strong> is an initiative to gather all possible public data about projects in GitHub from developers of the <strong>Dominican Republic</strong> using the <strong>
         <OutboundLink
-          target="_blank "
+          target="_blank"
           eventLabel="https://developer.github.com/v4/"
           to="https://developer.github.com/v4/">
            GitHub GraphQL API
