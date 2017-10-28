@@ -39,24 +39,26 @@ class DeveloperList extends React.Component {
   render() {
     const { filteredUsers } = this.state
     return (
-      <div className="row">
+      <div>
         <Filter
           placeholder="Filter developer by name..."
           onChange={(value) => this.filterChanged(value)}
         />
-        <InfiniteScroll
-          size={15}
-          items={filteredUsers}
-          render={(user, index) => (
-            <div
-              key={user.id}
-              className="col s4"
-              style={style[['first', 'second', 'third'][index % 3]]}
-            >
-              <DeveloperCard user={user} />
-            </div>
-          )}
-        />
+        <div className="row">
+          <InfiniteScroll
+            size={15}
+            items={filteredUsers}
+            render={(user, index) => (
+              <div
+                key={user.id}
+                className="col s4"
+                style={style[['first', 'second', 'third'][index % 3]]}
+              >
+                <DeveloperCard user={user} />
+              </div>
+            )}
+          />
+        </div>
       </div>
     )
   }
