@@ -39,7 +39,7 @@ const RepositoryCard = ({repo}) => {
           {repo.position && <strong style={{ marginRight: 20 }}>#{repo.position}</strong>}
           <OutboundLink
             target="_blank"
-            eventLabel={repo.url}
+            eventLabel={repo.url || ''}
             to={repo.url}
           >
             {repo.name}
@@ -57,7 +57,7 @@ const RepositoryCard = ({repo}) => {
         <OutboundLink
           style={style.action}
           target="_blank"
-          eventLabel={repo.user.githubUrl}
+          eventLabel={repo.user.githubUrl || ''}
           to={repo.user.githubUrl}
         >
           <img className="circle" style={style.avatar} src={repo.user.avatarUrl} />
@@ -66,7 +66,7 @@ const RepositoryCard = ({repo}) => {
         <OutboundLink
           style={style.action}
           target="_blank"
-          eventLabel={repo.url}
+          eventLabel={repo.url || ''}
           to={repo.url}
         >
           <i className="material-icons left">link</i>GitHub Project
