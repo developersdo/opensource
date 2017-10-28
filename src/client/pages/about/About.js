@@ -22,10 +22,10 @@ const About = () => (
         The main purpose of this website is to show local efforts that <strong>Dominicans</strong> are contributing toward open source communities.
       </p>
       <div className="row">
-        <div className="col s6">
+        <div className="col s6 m4 l6">
           <PopularLanguages />
         </div>
-        <div className="col s6">
+        <div className="col s6 m4 l6">
           <Statistics />
         </div>
       </div>
