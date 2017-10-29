@@ -71,3 +71,5 @@ public/*
 
 # mac os ds store files
 .DS_Store
+
+\.idea/
