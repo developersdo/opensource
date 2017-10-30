@@ -5,11 +5,9 @@ import NavBarItem from '~/components/nav-bar/navbar-item/NavBarItem'
 const NavBar = ({ location }) => (
   <nav className="blue darken-1">
     <div className="nav-wrapper container">
-      <span className="brand-logo">
-        <i className="material-icons">code</i>
-        Dominican Open Source
-      </span>
-      <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
+      <a href="#" className="brand-logo hide-on-large-only"><i class="material-icons hide-on-med-and-down">code</i>DO Open Source</a>
+      <a href="#" className="brand-logo hide-on-med-and-down"><i class="material-icons">code</i>Dominican Open Source</a>
+      <a href="#" data-activates="mobile-demo" className="button-collapse hide-on-large-only"><i className="material-icons">menu</i></a>
       <ul className="right hide-on-med-and-down">
         <NavBarItem to="/repositories">Repositories</NavBarItem>
         <NavBarItem to="/developers">Developers</NavBarItem>
