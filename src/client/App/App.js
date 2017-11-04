@@ -4,6 +4,7 @@ import About from '~/pages/about/About'
 import NavBar from '~/components/nav-bar/NavBar'
 import Developers from '~/pages/developers/Developers'
 import Repositories from '~/pages/repositories/Repositories'
+import Languages from '~/pages/languages/Languages'
 import FloatingButton from '~/components/floating-button/FloatingButton'
 import PageViewTracker from '~/components/page-view-tracker/PageViewTracker'
 
@@ -16,6 +17,7 @@ const App = () => (
       <NavBar/>
       <div className="container">
         <Route exact path="/" render={() => <Redirect to="/repositories" />} />
+        <Route path="/languages" component={Languages} />
         <Route path="/repositories" component={Repositories} />
         <Route path="/developers" component={Developers} />
         <Route path="/about" component={About} />
