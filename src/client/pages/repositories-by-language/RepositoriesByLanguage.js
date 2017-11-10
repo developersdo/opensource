@@ -1,17 +1,17 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
-import { orderBy, each, filter } from 'lodash'
+import { orderBy, each, filter, includes } from 'lodash'
 import utils from '~/utils'
 import store from '~/store/store'
 import Loading from '~/components/loading/Loading'
 import RepositoryList from '~/components/repository-list/RepositoryList'
 
 /**
- * The PopularRepositories class object list all repositories by popularity.
+ * The RepositoriesByLanguage class object.
  */
-class PopularRepositories extends React.Component {
+class RepositoriesByLanguage extends React.Component {
 
-  // The initial state.
+  // Initial state.
   state = {
     repos: [],
     loading: true,
@@ -19,7 +19,7 @@ class PopularRepositories extends React.Component {
   }
 
   /**
-   * When component did mount request respository data.
+   * Fetch repos when this component mount.
    */
   componentDidMount() {
     store.getRepos().then((response) => {
@@ -37,22 +37,25 @@ class PopularRepositories extends React.Component {
    * Render this component.
    */
   render() {
-    const { repos, loading } = this.state
+    const { repos, loading, key } = this.state
+    const { language } = this.props.match.params
+
+    const filteredRepos = filter(repos, (repo) => includes(repo.languageNames, language))
 
     if (loading) {
       return <Loading />
     }
 
     return (
-      <DocumentTitle title="Popular Repositories – Dominican Open Source">
+      <DocumentTitle title={ `Popular ${language} repositories – Dominican Open Source` }>
         <div>
-          <h3 className="center-align">Popular repositories</h3>
-          <p className="center-align">Showing <strong>{ repos.length }</strong> repositories <em>sorted by stars</em>.</p>
-          <RepositoryList repos={repos} />
+          <h3 className="center-align">Popular <u>{ language }</u> repositories</h3>
+          <p className="center-align">Showing <strong>{ filteredRepos.length }</strong> repositories.</p>
+          <RepositoryList repos={ filteredRepos } />
         </div>
       </DocumentTitle>
     )
   }
 }
 
-export default PopularRepositories
+export default RepositoriesByLanguage

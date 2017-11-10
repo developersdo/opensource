@@ -38,13 +38,22 @@ class NewRepositories extends React.Component {
    */
   render() {
     const { repos, loading } = this.state
+
     if (loading) {
       return <Loading />
     }
 
+    const now = new Date()
+    const recently = new Date(now.setDate(now.getDate() - 7))
+    const newRepos = filter(repos, (repo) => repo.createdAt > recently)
+
     return (
         <DocumentTitle title="New Repositories – Dominican Open Source">
-          <RepositoryList repos={repos} />
+          <div>
+            <h3 className="center-align">New repositories</h3>
+            <p className="center-align">Showing <strong>{ newRepos.length }</strong> repositories <em>created in the last 7 days</em>.</p>
+            <RepositoryList repos={newRepos} />
+          </div>
         </DocumentTitle>
       )
   }

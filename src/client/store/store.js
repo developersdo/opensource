@@ -93,6 +93,7 @@ function transformRepo(repo) {
           normalizedName: utils.unicodeNormalize(repo.name),
           normalizedDescription: utils.unicodeNormalize(repo.description),
           languages: parseLanguages(repo.languages),
+          languageNames: repo.languages,
           user: owner,
           createdAt: new Date(repo.createdAt),
         }))
@@ -104,7 +105,8 @@ function transformRepo(repo) {
 function transformUser(user) {
   return merge(user, {
     normalizedName: utils.unicodeNormalize(user.name),
-    githubUrl: `https://github.com/${user.login}`
+    githubUrl: `https://github.com/${user.login}`,
+    createdAt: new Date(user.createdAt),
   })
 }
 

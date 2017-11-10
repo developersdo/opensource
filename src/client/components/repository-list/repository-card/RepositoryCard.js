@@ -51,16 +51,14 @@ const RepositoryCard = ({repo}) => {
       <div className="card-action" style={style.languages}>
         {repo.languages.length === 0
           ? '(no languages)'
-          : repo.languages.map((lang, index) =>  {
-            return <Link
+          : repo.languages.map((lang, index) => (
+            <Link
               style={style.language}
-              to={`/languages/${ lang.name }`}
+              to={`/repositories/${ lang.name }`}
               className={lang.color}
               key={`${repo.id}-${lang.name}`}
-            >
-              {lang.name}
-            </Link>
-          })
+            >{lang.name}</Link>
+          ))
         }
       </div>
       <div className="card-action truncate" style={style.cardAction}>

@@ -29,6 +29,7 @@ class InfiniteScroll extends React.Component {
   componentWillReceiveProps(nextProps) {
     const currItems = get(this.props, 'items', [])
     const nextItems = get(nextProps, 'items', [])
+
     if (currItems.length !== nextItems.length) {
       this.setState({
         page: 0,
@@ -47,12 +48,12 @@ class InfiniteScroll extends React.Component {
     const { render } = this.props
     return (
       <InfiniteScroller
-        key={renderCount}
-        loader={<Loading/>}
-        hasMore={hasMore}
-        loadMore={() => this.loadMore()}
+        key={ renderCount }
+        loader={ <Loading/> }
+        hasMore={ hasMore }
+        loadMore={ () => this.loadMore() }
       >
-        {renderedItems.map(render)}
+        { renderedItems.map(render) }
       </InfiniteScroller>
     )
   }
