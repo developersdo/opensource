@@ -26,10 +26,10 @@ const DeveloperCard = ({user}) => (
         eventLabel={user.githubUrl}
         to={user.githubUrl}
       >
-        <img className="circle" style={style.avatar} src={user.avatarUrl} />
-        {user.name || user.login}
+        <p className="center-align"><img className="circle" style={style.avatar} src={user.avatarUrl} /></p>
+        <p className="center-align">{user.name || user.login}</p>
       </OutboundLink>
-      <p>Followed by: {user.followers}</p>
+      <p className="center-align">Followed by: {user.followers}</p>
       <p>{user.description}</p>
     </div>
     <div className="card-action">
