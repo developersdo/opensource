@@ -1,5 +1,6 @@
 import React from 'react'
 import { OutboundLink } from 'react-ga'
+import GithubAvatar from '~/components/github-avatar/GithubAvatar'
 
 const style = {
   avatar: {
@@ -26,8 +27,17 @@ const DeveloperCard = ({user}) => (
         eventLabel={user.githubUrl}
         to={user.githubUrl}
       >
-        <p className="center-align"><img className="circle" style={style.avatar} src={user.avatarUrl} /></p>
-        <p className="center-align">{user.name || user.login}</p>
+        <p className="center-align">
+          <GithubAvatar
+            className="circle"
+            style={ style.avatar }
+            user={ user }
+            size="64"
+          />
+        </p>
+        <p className="center-align">
+          {user.name || user.login}
+        </p>
       </OutboundLink>
       <p className="center-align">Followed by: {user.followers}</p>
       <p>{user.description}</p>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { OutboundLink } from 'react-ga'
+import GithubAvatar from '~/components/github-avatar/GithubAvatar'
 
 const style = {
   avatar: {
@@ -68,7 +69,12 @@ const RepositoryCard = ({repo}) => {
           eventLabel={repo.user.githubUrl || ''}
           to={repo.user.githubUrl}
         >
-          <img className="circle" style={style.avatar} src={repo.user.avatarUrl} />
+          <GithubAvatar
+            className="circle"
+            style={ style.avatar }
+            user={ repo.user }
+            size="32"
+          />
           {repo.user.name || repo.user.login}
         </OutboundLink>
         <OutboundLink
