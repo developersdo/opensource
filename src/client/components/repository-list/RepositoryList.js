@@ -1,5 +1,5 @@
 import React from 'react'
-import { filter } from 'lodash'
+import { filter, get } from 'lodash'
 import utils from '~/utils'
 import Filter from '~/components/filter/Filter'
 import InfiniteScroll from '~/components/infinite-scroll/InfiniteScroll'
@@ -12,11 +12,29 @@ class RepositoryList extends React.Component {
 
   // Initial state.
   state = {
-    filteredRepos: this.props.repos
+    repos: this.props.repos,
+    filteredRepos: this.props.repos,
   }
 
+  // Default props.
   static defaultProps = {
     repos: [],
+  }
+
+  /**
+   * Update the internal state when this component receive new repos prop.
+   * @param {Object} nextProps
+   */
+  componentWillReceiveProps(nextProps) {
+    const currRepos = get(this.props, 'repos', [])
+    const nextRepos = get(nextProps, 'repos', [])
+
+    if (currRepos.length !== nextRepos.length) {
+      this.setState({
+        repos: nextRepos,
+        filteredRepos: nextRepos,
+      })
+    }
   }
 
   /**
@@ -29,16 +47,16 @@ class RepositoryList extends React.Component {
       <div>
         <Filter
           placeholder="Filter repositories by name or author..."
-          onChange={(value) => this.filterChanged(value)}
+          onChange={ (value) => this.filterChanged(value) }
         />
         <InfiniteScroll
-          items={filteredRepos}
-          render={(repo) => (
+          items={ filteredRepos }
+          render={ (repo) => (
             <RepositoryCard
-              key={repo.id}
-              repo={repo}
+              key={ repo.id }
+              repo={ repo }
             />
-          )}
+          ) }
         />
       </div>
     )
@@ -49,7 +67,7 @@ class RepositoryList extends React.Component {
    * @param {String} value The new filter value.
    */
   filterChanged(value) {
-    const { repos } = this.props
+    const { repos } = this.state
 
     // Filter repos.
     const query = utils.unicodeNormalize(value)

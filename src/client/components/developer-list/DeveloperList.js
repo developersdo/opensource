@@ -51,7 +51,7 @@ class DeveloperList extends React.Component {
             render={(user, index) => (
               <div
                 key={user.id}
-                className="col s4"
+                className="col s12 m6 l4"
                 style={style[['first', 'second', 'third'][index % 3]]}
               >
                 <DeveloperCard user={user} />

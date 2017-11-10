@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { OutboundLink } from 'react-ga'
 
 const style = {
@@ -49,8 +50,15 @@ const RepositoryCard = ({repo}) => {
       </div>
       <div className="card-action" style={style.languages}>
         {repo.languages.length === 0
-          ? <span style={style.language}>(no languages)</span>
-          : repo.languages.map((lang, index) => <span key={index} className={lang.color} style={style.language}>{lang.name}</span>)
+          ? '(no languages)'
+          : repo.languages.map((lang, index) => (
+            <Link
+              style={style.language}
+              to={`/repositories/${ lang.name }`}
+              className={lang.color}
+              key={`${repo.id}-${lang.name}`}
+            >{lang.name}</Link>
+          ))
         }
       </div>
       <div className="card-action truncate" style={style.cardAction}>
