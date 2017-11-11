@@ -94,10 +94,9 @@ function transformUser(user) {
 function parseLanguages(input) {
   const names = compact(input.split(/\ +/g))
   const langs = names.map((name) => {
-    let color = languageColor(name)
     return {
       name: name,
-      color: color.backgroundColor,
+      color: languageColor(name).backgroundColor,
     }
   })
   return orderBy(langs, ['name'], ['asc'])
