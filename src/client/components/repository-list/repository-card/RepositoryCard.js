@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { OutboundLink } from 'react-ga'
+import GithubAvatar from '~/components/github-avatar/GithubAvatar'
+import { languageColor } from '~/utils/colors'
 
 const style = {
   avatar: {
@@ -15,18 +17,22 @@ const style = {
   languages: {
     paddingBottom: 6,
   },
-  language: {
-    display: 'inline-block',
-    padding: '0 10px',
-    margin: '0 10px 10px 0',
-    borderRadius: 5,
-  },
   cardTitle: {
     wordWrap: 'break-word',
   },
   cardAction: {
     whiteSpace: 'initial',
   },
+}
+
+const languageStyle = (language) => {
+  let color = languageColor(language)
+  return {
+    display: 'inline-block',
+    margin: '0 10px 10px 0',
+    color: color.textColor,
+    backgroundColor: color.backgroundColor
+  }
 }
 
 const RepositoryCard = ({repo}) => {
@@ -53,9 +59,9 @@ const RepositoryCard = ({repo}) => {
           ? '(no languages)'
           : repo.languages.map((lang, index) => (
             <Link
-              style={style.language}
+              style={languageStyle(lang.name)}
               to={`/repositories/${ lang.name }`}
-              className={lang.color}
+              className="chip"
               key={`${repo.id}-${lang.name}`}
             >{lang.name}</Link>
           ))
@@ -68,7 +74,12 @@ const RepositoryCard = ({repo}) => {
           eventLabel={repo.user.githubUrl || ''}
           to={repo.user.githubUrl}
         >
-          <img className="circle" style={style.avatar} src={repo.user.avatarUrl} />
+          <GithubAvatar
+            className="circle"
+            style={ style.avatar }
+            user={ repo.user }
+            size="32"
+          />
           {repo.user.name || repo.user.login}
         </OutboundLink>
         <OutboundLink
