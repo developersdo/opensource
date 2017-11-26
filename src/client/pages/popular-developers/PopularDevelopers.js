@@ -35,7 +35,7 @@ class PopularDevelopers extends React.Component {
       <DocumentTitle title="Popular Developers – Dominican Open Source">
         <div>
           <h3 className="center-align">Popular developers</h3>
-          <p className="center-align">Showing <strong>{ users.length }</strong> developers <em>sorted by followers</em>.</p>
+          <p className="center-align">Showing <strong>{ users.length.toLocaleString() }</strong> developers <em>sorted by followers</em>.</p>
           <DeveloperList users={ users } />
         </div>
       </DocumentTitle>

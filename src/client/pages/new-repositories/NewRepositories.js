@@ -51,7 +51,7 @@ class NewRepositories extends React.Component {
         <DocumentTitle title="New Repositories – Dominican Open Source">
           <div>
             <h3 className="center-align">New repositories</h3>
-            <p className="center-align">Showing <strong>{ newRepos.length }</strong> repositories <em>created in the last 7 days</em>.</p>
+            <p className="center-align">Showing <strong>{ newRepos.length.toLocaleString() }</strong> repositories <em>created in the last 7 days</em>.</p>
             <RepositoryList repos={newRepos} />
           </div>
         </DocumentTitle>

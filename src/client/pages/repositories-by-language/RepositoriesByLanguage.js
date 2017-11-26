@@ -50,7 +50,7 @@ class RepositoriesByLanguage extends React.Component {
       <DocumentTitle title={ `Popular ${language} repositories – Dominican Open Source` }>
         <div>
           <h3 className="center-align">Popular <u>{ language }</u> repositories</h3>
-          <p className="center-align">Showing <strong>{ filteredRepos.length }</strong> repositories.</p>
+          <p className="center-align">Showing <strong>{ filteredRepos.length.toLocaleString() }</strong> repositories.</p>
           <RepositoryList repos={ filteredRepos } />
         </div>
       </DocumentTitle>

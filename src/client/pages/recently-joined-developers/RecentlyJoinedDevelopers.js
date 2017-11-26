@@ -39,7 +39,7 @@ class RecentlyJoinedDevelopers extends React.Component {
       <DocumentTitle title="Recently Joined Developers – Dominican Open Source">
         <div>
           <h3 className="center-align">Recently joined developers</h3>
-          <p className="center-align">Showing <strong>{ newUsers.length }</strong> developers that <em>has joined in the last 30 days</em>.</p>
+          <p className="center-align">Showing <strong>{ newUsers.length.toLocaleString() }</strong> developers that <em>has joined in the last 30 days</em>.</p>
           <DeveloperList users={ newUsers } />
         </div>
       </DocumentTitle>
