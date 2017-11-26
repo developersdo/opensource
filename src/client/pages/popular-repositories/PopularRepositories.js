@@ -47,7 +47,7 @@ class PopularRepositories extends React.Component {
       <DocumentTitle title="Popular Repositories – Dominican Open Source">
         <div>
           <h3 className="center-align">Popular repositories</h3>
-          <p className="center-align">Showing <strong>{ repos.length }</strong> repositories <em>sorted by stars</em>.</p>
+          <p className="center-align">Showing <strong>{ repos.length.toLocaleString() }</strong> repositories <em>sorted by stars</em>.</p>
           <RepositoryList repos={repos} />
         </div>
       </DocumentTitle>
