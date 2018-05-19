@@ -16,15 +16,19 @@ class Filter extends React.Component {
     const { placeholder } = this.props
 
     return (
-      <div className="row">
-        <div className="input-field col s12 m12 l6 offset-l3">
+      <div className="card hoverable">
+        <div className="input-field">
           <input
+            id="search"
             className="validate"
             style={style.input}
             placeholder={placeholder}
-            type="text"
+            type="search"
             onChange={(event) => this.filterChanged(event.target.value)}
           />
+          <label className="label-icon" htmlFor="search">
+            <i className="material-icons">search</i>
+          </label>
         </div>
       </div>
     )
