@@ -39,7 +39,7 @@ class DeveloperList extends React.Component {
   render() {
     const { filteredUsers } = this.state
     return (
-      <div>
+      <div className="row">
         <Filter
           placeholder="Filter developer by name..."
           onChange={(value) => this.filterChanged(value)}
