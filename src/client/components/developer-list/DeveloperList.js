@@ -53,7 +53,7 @@ class DeveloperList extends React.Component {
               className="col s4"
               style={style[['first', 'second', 'third'][index % 3]]}
             >
-              <DeveloperCard user={user} />
+              <DeveloperCard user={user} index={index+1} />
             </div>
           )}
         />

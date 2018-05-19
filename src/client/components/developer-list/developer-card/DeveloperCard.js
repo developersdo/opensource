@@ -14,12 +14,21 @@ const style = {
   fact: {
     display: 'inline-block',
     marginRight: 20,
+  },
+  cardNumber: {
+    display: 'block',
+    fontWeight: 'bold',
+    fontSize: '110%',
+    position: 'absolute',
+    right: 20,
+    top: 20
   }
 }
 
-const DeveloperCard = ({user}) => (
+const DeveloperCard = ({user, index}) => (
   <div className="card hoverable">
     <div className="card-content">
+      <span style={style.cardNumber}>#{index}</span>
       <OutboundLink
         className="card-title truncate"
         target="_blank"
