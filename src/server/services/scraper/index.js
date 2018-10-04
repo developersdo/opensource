@@ -1,6 +1,5 @@
 const print = require('chalk-printer')
 
-const { User } = require('../../models')
 const usersScraper = require('./users')
 const reposScraper = require('./repos')
 
