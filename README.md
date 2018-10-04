@@ -18,29 +18,29 @@ If you want to run this project locally you will need: [NodeJS 8+](https://nodej
 
 **Note:** If you just want to develop the website then skip step 3 and 4.
 
- 1. `yarn install`
+ 1. `npm install`
  2. Copy `config/default.json` to `config/development.json`.
  3. [Generate a GitHub personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
  4. Add your GitHub personal access token to `config/development.json` (this file is [git-ignored](.gitignore)).
- 5. `yarn serve` and open http://localhost:8080/opensource
+ 5. `npm run serve` and open http://localhost:8080/opensource
 
 That's it! Happy coding.
 
 ### Scripts
 
- - `yarn scrape` – scrape for all GitHub users and repos as configured.
-   - `yarn scrape -- --only=users` – scrape for all GitHub repos.
-   - `yarn scrape -- --only=repos` – scrape for all GitHub users.
- - `yarn generate-data` – generate GitHub users and repos for front-end usage.
-   - `yarn generate-data -- --only users` – generate JSON data for users.
-   - `yarn generate-data -- --only repos` – generate JSON data for repos.
- - `yarn sequelize` – to use sequelize, pass cli args as follow: `yarn sequelize -- db:migrate`.
-   - `yarn sequelize -- db:migrate` – Run all pending database migrations.
-   - `yarn sequelize -- db:migrate:undo` – Rollback last database migration.
-   - `yarn sequelize -- db:migrate:undo:all` – Rollback all database migrations.
- - `yarn sequelize:debug` – to use sequelize in debug mode.
- - `yarn refresh` – to run the scraper and generate frontend data.
- - `yarn build` – to run static assets for production usage.
+ - `npm run scrape` – scrape for all GitHub users and repos as configured.
+   - `npm run scrape -- --only=users` – scrape for all GitHub repos.
+   - `npm run scrape -- --only=repos` – scrape for all GitHub users.
+ - `npm run generate-data` – generate GitHub users and repos for front-end usage.
+   - `npm run generate-data -- --only users` – generate JSON data for users.
+   - `npm run generate-data -- --only repos` – generate JSON data for repos.
+ - `npm run sequelize` – to use sequelize, pass cli args as follow: `npm run sequelize -- db:migrate`.
+   - `npm run sequelize -- db:migrate` – Run all pending database migrations.
+   - `npm run sequelize -- db:migrate:undo` – Rollback last database migration.
+   - `npm run sequelize -- db:migrate:undo:all` – Rollback all database migrations.
+ - `npm run sequelize:debug` – to use sequelize in debug mode.
+ - `npm run refresh` – to run the scraper and generate frontend data.
+ - `npm run build` – to run static assets for production usage.
 
 ### Deployment
 

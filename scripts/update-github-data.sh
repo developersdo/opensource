@@ -15,7 +15,7 @@
 #   2. `git config --global user.email "rubens@mariuzzo.com"`
 #   3. `ssh-keygen -t rsa -b 4096 -C "rubens@mariuzzo.com" -P ""`
 #   4. Add public key to personal GitHub account.
-#   5. Install tj/n, n latest and yarn.
+#   5. Install `tj/n` and `n latest`.
 #   6. Create a `config.json` file along with this script.
 ##
 
@@ -44,7 +44,7 @@ fi
 
 # Install dependencies.
 echo "🔌  Installing dependencies..."
-yarn install --silent
+npm install
 
 # Copy local configuration.
 echo "📝  Copying local configuration..."
@@ -56,11 +56,11 @@ cp -v $SCRIPT_PATH/config.json $SCRIPT_PATH/repo/config/development.json
 
 # Run database migrations if needed.
 echo "🗄  Updating database schema..."
-yarn sequelize -- db:migrate
+npm run sequelize -- db:migrate
 
 # Update GitHub data using the scraper and data generator.
 echo "⚡️  Refreshing GitHub data..."
-yarn refresh --silent
+npm run refresh
 
 # Add changes, commit and push.
 echo "📦  Preparing commit..."
