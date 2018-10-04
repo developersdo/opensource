@@ -49,7 +49,7 @@ class InfiniteScroll extends React.Component {
     return (
       <InfiniteScroller
         key={ renderCount }
-        loader={ <Loading/> }
+        loader={ <Loading key={renderCount}/> }
         hasMore={ hasMore }
         loadMore={ () => this.loadMore() }
       >
