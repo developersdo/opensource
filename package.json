@@ -37,7 +37,7 @@
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "sequelize-cli": "3",
-    "sqlite3": "^3.1.13",
+    "sqlite3": "^4.0.2",
     "style-loader": "0.19",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
