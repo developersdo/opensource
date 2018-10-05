@@ -6,19 +6,6 @@ import Filter from '~/components/filter/Filter'
 import InfiniteScroll from '~/components/infinite-scroll/InfiniteScroll'
 import DeveloperCard from '~/components/developer-list/developer-card/DeveloperCard'
 
-const style = {
-  first: {
-    paddingRight: 10,
-  },
-  second: {
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  third: {
-    paddingLeft: 10,
-  }
-}
-
 /**
  * The DeveloperList object class.
  */
@@ -50,8 +37,7 @@ class DeveloperList extends React.Component {
           render={(user, index) => (
             <div
               key={user.id}
-              className="col s4"
-              style={style[['first', 'second', 'third'][index % 3]]}
+              className="col s12 m4"
             >
               <DeveloperCard user={user} index={index+1} />
             </div>
