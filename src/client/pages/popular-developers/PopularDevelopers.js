@@ -7,10 +7,13 @@ import DeveloperList from '~/components/developer-list/DeveloperList'
 
 class PopularDevelopers extends React.Component {
 
-  state = {
-    users: [],
-    loading: true,
-    error: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      users: [],
+      loading: true,
+      error: false
+    }
   }
 
   componentDidMount() {
@@ -25,7 +28,7 @@ class PopularDevelopers extends React.Component {
   }
 
   render() {
-    const { users, loading, error } = this.state
+    const { users, loading } = this.state
 
     if (loading) {
       return <Loading />

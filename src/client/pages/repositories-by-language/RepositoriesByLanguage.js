@@ -1,7 +1,6 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
 import { orderBy, each, filter, includes } from 'lodash'
-import utils from '~/utils'
 import store from '~/store/store'
 import Loading from '~/components/loading/Loading'
 import RepositoryList from '~/components/repository-list/RepositoryList'
@@ -37,7 +36,7 @@ class RepositoriesByLanguage extends React.Component {
    * Render this component.
    */
   render() {
-    const { repos, loading, key } = this.state
+    const { repos, loading } = this.state
     const { language } = this.props.match.params
 
     const filteredRepos = filter(repos, (repo) => includes(repo.languageNames, language))

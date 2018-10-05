@@ -1,7 +1,6 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
 import { orderBy, each, filter } from 'lodash'
-import utils from '~/utils'
 import store from '~/store/store'
 import Loading from '~/components/loading/Loading'
 import RepositoryList from '~/components/repository-list/RepositoryList'
@@ -11,11 +10,14 @@ import RepositoryList from '~/components/repository-list/RepositoryList'
  */
 class NewRepositories extends React.Component {
 
-  // Initial state.
-  state = {
-    repos: [],
-    loading: true,
-    error: false
+  constructor(props){
+    super(props)
+      // Initial state.
+    this.state = {
+      repos: [],
+      loading: true,
+      error: false
+    }
   }
 
   /**

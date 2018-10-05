@@ -34,7 +34,7 @@ class AboutPopularLanguages extends React.Component {
     })
   }
   render() {
-    const { repos, loading, error } = this.state
+    const { repos, loading } = this.state
     if (loading) {
       return <Loading />
     }

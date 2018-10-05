@@ -1,4 +1,4 @@
-const { isEqual, merge, pick } = require('lodash')
+const { pick } = require('lodash')
 const print = require('chalk-printer')
 
 const { User, UserChange } = require('../../models')
