@@ -1,4 +1,4 @@
-const debug = require('debug')('services:scrapper')
+const debug = require('debug')('services:scraper')
 
 const usersScraper = require('./users')
 const reposScraper = require('./repos')
