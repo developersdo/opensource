@@ -4,14 +4,11 @@ import store from '~/store/store'
 import Loading from '~/components/loading/Loading'
 
 class AboutStatistics extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      repos: [],
-      users: [],
-      loading: true,
-      error: false
-    }
+  state = {
+    repos: [],
+    users: [],
+    loading: true,
+    error: false
   }
   componentDidMount() {
     Promise.all([store.getRepos(), store.getUsers()])
