@@ -10,14 +10,11 @@ import RepositoryList from '~/components/repository-list/RepositoryList'
  */
 class NewRepositories extends React.Component {
 
-  constructor(props){
-    super(props)
-      // Initial state.
-    this.state = {
-      repos: [],
-      loading: true,
-      error: false
-    }
+  // Initial state.
+  state = {
+    repos: [],
+    loading: true,
+    error: false
   }
 
   /**
