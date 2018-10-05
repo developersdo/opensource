@@ -50,6 +50,6 @@ module.exports = {
 }
 
 function logRateLimit(response) {
-  debug('DD - Rate limit:', response.data.rateLimit)
+  debug('Rate limit:', response.data.rateLimit)
   return response
 }
