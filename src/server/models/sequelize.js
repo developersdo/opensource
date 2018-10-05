@@ -1,5 +1,4 @@
 const path = require('path')
-const print = require('chalk-printer')
 const Sequelize = require('sequelize')
 
 const config = require('../../../.sequelizerc')

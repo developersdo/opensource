@@ -1,4 +1,4 @@
-const print = require('chalk-printer')
+const debug = require('debug')('services:scrapper')
 
 const usersScraper = require('./users')
 const reposScraper = require('./repos')
@@ -13,7 +13,7 @@ module.exports = {
       await usersScraper.scrape()
       await reposScraper.scrape()
     } catch (error) {
-      print.error('Cannot scrape completely', error)
+      debug('Cannot scrape completely', error)
     }
   }
 }

@@ -1,4 +1,4 @@
-const print = require('chalk-printer')
+const debug = require('debug')('services:scrapper:users')
 const config = require('config')
 
 const srv = require('..')
@@ -12,7 +12,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   async scrape() {
-    print.trace('Scrape users data...')
+    debug('Scrape users data...')
 
     // Scrape users data for each defined locations.
     for (const location of config.get('users.locations')) {
@@ -36,7 +36,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   async scrapeUsers(query, after = null) {
-    print.trace('Scrape users')
+    debug('Scrape users')
 
     return await srv.github.searchUsers(query, after)
       .then((response) => {

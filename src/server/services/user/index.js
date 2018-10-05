@@ -1,5 +1,5 @@
 const { isEqual, merge, pick } = require('lodash')
-const print = require('chalk-printer')
+const debug = require('debug')('services:user')
 
 const { User, UserChange } = require('../../models')
 
@@ -12,7 +12,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   createOrUpdateUsers(users = []) {
-    print.trace(`Create or update ${users.length} users...`)
+    debug(`Create or update ${users.length} users...`)
 
     return Promise.all(
       users.map(async (user) => {
@@ -34,7 +34,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   findAllUsers(attributes = []) {
-    print.trace('Find all users with:', { attributes })
+    debug('Find all users with:', { attributes })
 
     if (attributes && !Array.isArray(attributes)) {
       attributes = [attributes]
@@ -58,7 +58,7 @@ module.exports = {
    * @return {Promise}
    */
   async updateUser(id, user) {
-    print.trace(`Update user with id: ${id}...`)
+    debug(`Update user with id: ${id}...`)
 
     const original = await User.findById(id)
     if (!original) {
@@ -71,7 +71,7 @@ module.exports = {
       return await User.update(updates, { where: { originalId: user.originalId } })
     }
 
-    print.trace(`Nothing to update for user with login: ${user.login}`)
+    debug(`Nothing to update for user with login: ${user.login}`)
   },
 
   /**

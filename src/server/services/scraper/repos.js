@@ -1,4 +1,4 @@
-const print = require('chalk-printer')
+const debug = require('debug')('services:scrapper:repos')
 
 const srv = require('..')
 const utils = require('../../utils')
@@ -11,7 +11,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   async scrape() {
-    print.trace('Scrape repositories data...')
+    debug('Scrape repositories data...')
 
     // Get all stored user logins.
     const logins = await srv.user.findAllUsers('login')
@@ -32,7 +32,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   async scrapeReposFromUsers(users, after = null) {
-    print.trace('Scrape repos of users:', users)
+    debug('Scrape repos of users:', users)
 
     const query = users.map(user => `user:${user}`).join(' ')
     return await srv.github.searchRepos(query, after)
