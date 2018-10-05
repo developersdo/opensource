@@ -1,5 +1,5 @@
 const { isEqual, merge, pick } = require('lodash')
-const print = require('chalk-printer')
+const debug = require('debug')('services:repo')
 
 const { Repo, RepoChange } = require('../../models')
 
@@ -12,7 +12,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   createOrUpdateRepos(repos = []) {
-    print.trace(`Create or update ${repos.length} repos...`)
+    debug(`Create or update ${repos.length} repos...`)
 
     return Promise.all(
       repos.map(async (repo) => {
@@ -34,7 +34,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   findAllRepos(attributes = []) {
-    print.trace('Find all repos with:', { attributes })
+    debug('Find all repos with:', { attributes })
 
     if (attributes && Array.isArray(attributes)) {
       attributes = [attributes]
@@ -58,7 +58,7 @@ module.exports = {
    * @return {Promise}
    */
   async updateRepo(id, repo) {
-    print.trace(`Update repo with id: ${id}...`)
+    debug(`Update repo with id: ${id}...`)
 
     const original = await Repo.findById(id)
     if (!original) {
@@ -71,7 +71,7 @@ module.exports = {
       return await Repo.update(updates, { where: { originalId: repo.originalId } })
     }
 
-    print.trace(`Nothing to update for repo with name: ${repo.name}`)
+    debug(`Nothing to update for repo with name: ${repo.name}`)
   },
 
   /**
