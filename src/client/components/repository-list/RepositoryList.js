@@ -9,7 +9,7 @@ import RepositoryCard from '~/components/repository-list/repository-card/Reposit
  * The RepositoryList object class.
  */
 class RepositoryList extends React.Component {
-
+  
   // Initial state.
   state = {
     repos: this.props.repos,

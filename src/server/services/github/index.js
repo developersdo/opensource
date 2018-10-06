@@ -1,4 +1,4 @@
-const print = require('chalk-printer')
+const debug = require('debug')('services:github')
 
 const client = require('./client')
 const queries = require('./queries')
@@ -14,7 +14,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   searchUsers(query, after = null) {
-    print.trace('Search users:', { query, after })
+    debug('Search users:', { query, after })
 
     return client.query({
       query: queries.searchUsers,
@@ -31,7 +31,7 @@ module.exports = {
    * @return {Promise} A promise.
    */
   searchRepos(query, after = null) {
-    print.trace('Search repos:', { query, after })
+    debug('Search repos:', { query, after })
 
     return client.query({
       query: queries.searchRepos,
@@ -50,6 +50,6 @@ module.exports = {
 }
 
 function logRateLimit(response) {
-  print.trace('Rate limit:', response.data.rateLimit)
+  debug('Rate limit:', response.data.rateLimit)
   return response
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, withRouter, matchPath } from 'react-router-dom'
+import {  withRouter } from 'react-router-dom'
 import NavBarItem from '~/components/nav-bar/navbar-item/NavBarItem'
 
 const style = {
