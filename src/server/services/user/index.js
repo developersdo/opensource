@@ -1,4 +1,4 @@
-const { isEqual, merge, pick } = require('lodash')
+const { pick } = require('lodash')
 const debug = require('debug')('services:user')
 
 const { User, UserChange } = require('../../models')

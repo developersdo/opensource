@@ -1,6 +1,5 @@
-const { isEqual, merge, pick } = require('lodash')
+const { pick } = require('lodash')
 const debug = require('debug')('services:repo')
-
 const { Repo, RepoChange } = require('../../models')
 
 module.exports = {

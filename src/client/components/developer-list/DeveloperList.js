@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 import { filter } from 'lodash'
 import utils from '~/utils'
 import Filter from '~/components/filter/Filter'

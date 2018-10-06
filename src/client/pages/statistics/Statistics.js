@@ -7,22 +7,22 @@ class AboutStatistics extends React.Component {
   state = {
     repos: [],
     users: [],
-    loading: true,
-    error: false
+    loading: true
   }
+
   componentDidMount() {
     Promise.all([store.getRepos(), store.getUsers()])
       .then(([repoResponse, userResponse]) => {
         this.setState({
           repos: repoResponse.items,
           users: userResponse.items,
-          loading: !repoResponse.ready || !userResponse.ready,
-          error: repoResponse || userResponse
+          loading: !repoResponse.ready || !userResponse.ready
         })
       })
   }
+
   render() {
-    const { repos, users, loading, error } = this.state
+    const { repos, users, loading } = this.state
     if (loading) {
       return <Loading />
     }

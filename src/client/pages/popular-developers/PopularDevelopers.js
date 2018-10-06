@@ -9,8 +9,7 @@ class PopularDevelopers extends React.Component {
 
   state = {
     users: [],
-    loading: true,
-    error: false
+    loading: true
   }
 
   componentDidMount() {
@@ -18,14 +17,13 @@ class PopularDevelopers extends React.Component {
       const orderedUsers = orderBy(response.items, ['followers', 'name'], ['desc', 'asc'])
       this.setState({
         users: orderedUsers,
-        loading: !response.ready,
-        error: response.error
+        loading: !response.ready
       })
     })
   }
 
   render() {
-    const { users, loading, error } = this.state
+    const { users, loading } = this.state
 
     if (loading) {
       return <Loading />

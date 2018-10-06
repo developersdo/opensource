@@ -1,9 +1,7 @@
 import React from 'react'
-import { Route, Redirect, NavLink, Switch } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 import New from '~/pages/new-repositories/NewRepositories'
-import store from '~/store/store'
 import Popular from '~/pages/popular-repositories/PopularRepositories'
-import Trending from '~/pages/trending-repositories/TrendingRepositories'
 import ByLanguage from '~/pages/repositories-by-language/RepositoriesByLanguage'
 import SubNavLink from '~/components/sub-nav-link/SubNavLink'
 
