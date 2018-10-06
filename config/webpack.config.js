@@ -54,7 +54,8 @@ module.exports = {
       template: pathTo.index,
       inject: 'body',
       hash: true,
-      filename: 'index.html'
+      filename: 'index.html',
+      env: process.NODE_ENV
     }),
     new CommonsChunkPlugin({
       name: 'vendor',

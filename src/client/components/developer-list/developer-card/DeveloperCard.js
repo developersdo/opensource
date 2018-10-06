@@ -13,8 +13,7 @@ const style = {
     display: 'inline-block',
   },
   fact: {
-    display: 'inline-block',
-    marginRight: 20,
+    display: 'block'
   },
   cardNumber: {
     display: 'block',
