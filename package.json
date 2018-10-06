@@ -15,7 +15,7 @@
     "fs-extra": "^4.0.1",
     "graphql-tag": "^2.4.0",
     "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-document-title": "^2.0.3",
