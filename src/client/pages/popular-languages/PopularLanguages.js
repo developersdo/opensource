@@ -21,15 +21,13 @@ const style = {
 class AboutPopularLanguages extends React.Component {
   state = {
     repos: [],
-    loading: true,
-    error: false
+    loading: true
   }
   componentDidMount() {
     store.getRepos().then((response) => {
       this.setState({
         repos: response.items,
-        loading: !response.ready,
-        error: response.error
+        loading: !response.ready
       })
     })
   }

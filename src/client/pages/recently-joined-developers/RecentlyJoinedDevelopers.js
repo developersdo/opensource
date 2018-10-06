@@ -9,8 +9,7 @@ class RecentlyJoinedDevelopers extends React.Component {
   
   state = {
       users: [],
-      loading: true,
-      error: false
+      loading: true
     }
 
   componentDidMount() {
@@ -18,8 +17,7 @@ class RecentlyJoinedDevelopers extends React.Component {
       const orderedUsers = orderBy(response.items, ['createdAt', 'name'], ['desc', 'asc'])
       this.setState({
         users: orderedUsers,
-        loading: !response.ready,
-        error: response.error
+        loading: !response.ready
       })
     })
   }
