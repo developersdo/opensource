@@ -4,7 +4,7 @@ cache: false
 
 node_js:
 - stable
-
+before_install: npm install node-pre-gyp
 before_deploy: npm run build
 deploy:
   provider: pages
