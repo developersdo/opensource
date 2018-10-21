@@ -41,6 +41,10 @@ module.exports = {
           { loader: 'css-loader', options: { importLoaders: 1, modules: 1 } },
           { loader: 'sass-loader' }
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader'
       }
     ],
   },
