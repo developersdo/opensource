@@ -2,7 +2,7 @@
   "github" : {
     "api": {
       "uri": "https://api.github.com/graphql",
-      "token": "https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/"
+      "token": "GH_API_TOKEN"
     }
   },
   "users": {

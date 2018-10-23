@@ -42,7 +42,7 @@ That's it! Happy coding.
 
 ### Deployment
 
-The deployment is done by [Travis](https://travis-ci.org/developersdo/opensource) which listen to pushes in [`master`](https://github.com/developersdo/opensource/tree/master) branch, then build website assets and finally pushes the site into [`gh-pages`](https://github.com/developersdo/opensource/tree/gh-pages) branch. All details are specified at [.travis.yml](.travis.yml).
+The deployment is done by [CirceCI](https://circleci.com/gh/developersdo/opensource) which listen to pushes in [`master`](https://github.com/developersdo/opensource/tree/master) branch, then build website assets and finally pushes the site into [`gh-pages`](https://github.com/developersdo/opensource/tree/gh-pages) branch. All details are specified at [.circleci/config.yml](.circleci/config.yml).
 
 <div align=center>
 With ♥︎ from <a href="https://github.com/developersdo/opensource/graphs/contributors">all contributors</a>.
