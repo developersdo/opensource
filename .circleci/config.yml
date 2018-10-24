@@ -2,15 +2,9 @@ version: 2
 
 jobs:
   build:
-    branches:
-      ignore:
-        - gh-pages
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
-    environment:
-      - SOURCE_BRANCH: master
-      - TARGET_BRANCH: gh-pages
     steps:
       - checkout
       - restore_cache:
@@ -24,6 +18,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
       - run: npm run build
+  deploy:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/repo
+    environment:
+      - SOURCE_BRANCH: master
+      - TARGET_BRANCH: gh-pages
+    steps:
       - deploy:
           name: Deploy to Github Pages
           command: |
@@ -47,3 +49,65 @@ jobs:
               git commit -m "Deployed: website to Github Pages (automatic): ${CIRCLE_SHA1}" --allow-empty
               git push -q https://${GH_TOKEN}@github.com/developersdo/opensource.git $TARGET_BRANCH
             fi
+  scrape:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/repo
+    environment:
+      - SOURCE_BRANCH: master
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - run:
+          name: Scraping Github data
+          command: |
+            if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
+              git config --global user.email $GH_EMAIL
+              git config --global user.name $GH_NAME
+
+              npm run refresh
+
+              git add -A
+              git commit -m "Updated: Github data (automatic): ${CIRCLE_SHA1}" --allow-empty
+              git push -q https://${GH_TOKEN}@github.com/developersdo/opensource.git $SOURCE_BRANCH
+            fi
+
+workflows:
+  version: 2
+  build_scrape_and_deploy_daily:
+    jobs:
+      - build
+      - scrape:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - scrape
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+                only:
+                  - master
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
