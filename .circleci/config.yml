@@ -26,6 +26,18 @@ jobs:
       - SOURCE_BRANCH: master
       - TARGET_BRANCH: gh-pages
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm test
+      - run: npm run build
       - deploy:
           name: Deploy to Github Pages
           command: |
@@ -33,13 +45,7 @@ jobs:
               git config --global user.email $GH_EMAIL
               git config --global user.name $GH_NAME
 
-<<<<<<< HEAD
-              touch ~/.ssh/known_hosts
-=======
->>>>>>> Fixed: github.com key auth.
-              ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-              git clone $CIRCLE_REPOSITORY_URL out
+              git clone https://${GH_TOKEN}@github.com/developersdo/opensource.git out
 
               cd out
               git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
@@ -63,18 +69,24 @@ jobs:
       - SOURCE_BRANCH: master
       - TARGET_BRANCH: gh-pages
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm test
+      - run: npm run build
       - run:
           name: Scraping Github data
           command: |
             if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
               git config --global user.email $GH_EMAIL
               git config --global user.name $GH_NAME
-
-<<<<<<< HEAD
-              touch ~/.ssh/known_hosts
-=======
->>>>>>> Fixed: github.com key auth.
-              ssh-keyscan github.com >> ~/.ssh/known_hosts
 
               npm run refresh
 
