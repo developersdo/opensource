@@ -1,5 +1,8 @@
 ![Dominican Open Source - Discover the open source ecosystem related to the Dominican Republic!](.github/banner.svg)
 
+[![GitHub license](https://img.shields.io/github/license/developersdo/opensource.svg)](https://github.com/developersdo/opensource/blob/develop/LICENSE)
+[![CircleCI](https://circleci.com/gh/developersdo/opensource.svg?style=svg)](https://circleci.com/gh/developersdo/opensource)
+
 **Dominican Open Source** is an initiative to gather all possible public data about projects and their contributors related to the Dominican Republic in GitHub using the [GraphQL API](https://developer.github.com/v4/).
 
 ## Want to join?
