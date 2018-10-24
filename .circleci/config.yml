@@ -2,9 +2,6 @@ version: 2
 
 jobs:
   build:
-    branches:
-      ignore:
-        - gh-pages
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
@@ -47,3 +44,19 @@ jobs:
               git commit -m "Deployed: website to Github Pages (automatic): ${CIRCLE_SHA1}" --allow-empty
               git push -q https://${GH_TOKEN}@github.com/developersdo/opensource.git $TARGET_BRANCH
             fi
+
+workflows:
+  version: 2
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+                ignore:
+                  - gh-pages
+    jobs:
+      - build
+  build:
+    jobs:
+      - build
