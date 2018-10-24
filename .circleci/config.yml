@@ -40,6 +40,8 @@ jobs:
 
               cp -a public/. out/.
 
+              mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
+
               cd out
               git add -A
               git commit -m "Deployed: website to Github Pages (automatic): ${CIRCLE_SHA1}" --allow-empty
