@@ -5,6 +5,7 @@ jobs:
     branches:
       ignore:
         - gh-pages
+        - master
     docker:
       - image: circleci/node:10
 
@@ -50,6 +51,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
+      - run: npm run build
       - deploy:
           name: Deploy
           command: |
