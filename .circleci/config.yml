@@ -33,13 +33,7 @@ jobs:
               git config --global user.email $GH_EMAIL
               git config --global user.name $GH_NAME
 
-<<<<<<< HEAD
-              touch ~/.ssh/known_hosts
-=======
->>>>>>> Fixed: github.com key auth.
-              ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-              git clone $CIRCLE_REPOSITORY_URL out
+              git clone https://${GH_TOKEN}@github.com/developersdo/opensource.git out
 
               cd out
               git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
@@ -69,12 +63,6 @@ jobs:
             if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
               git config --global user.email $GH_EMAIL
               git config --global user.name $GH_NAME
-
-<<<<<<< HEAD
-              touch ~/.ssh/known_hosts
-=======
->>>>>>> Fixed: github.com key auth.
-              ssh-keyscan github.com >> ~/.ssh/known_hosts
 
               npm run refresh
 
