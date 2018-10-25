@@ -39,6 +39,7 @@
     "sequelize-cli": "3",
     "sqlite3": "^4.0.2",
     "style-loader": "0.19",
+    "svg-sprite-loader": "^4.1.2",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },
