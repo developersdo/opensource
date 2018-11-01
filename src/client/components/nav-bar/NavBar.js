@@ -21,11 +21,8 @@ const style = {
 class NavBar extends React.Component {
 
   componentDidMount() {
-    $(() => {
-      $('.button-collapse').sideNav({
-        closeOnClick: true,
-      })
-    })
+    const sidenav = document.querySelector('.side-nav')
+    M.Sidenav.init(sidenav, {closeOnClick: true})
   }
 
   render() {
@@ -42,9 +39,9 @@ class NavBar extends React.Component {
             </svg>
           </span>
           <span
-            className="button-collapse hide-on-large-only"
+            className="sidenav-trigger hide-on-large-only"
             style={ style.menu }
-            data-activates="nav-bar-mobile"
+            data-target="nav-bar-mobile"
           ><i className="material-icons">menu</i></span>
           <ul className="right hide-on-med-and-down">
             <NavBarItem to="/repositories">Repositories</NavBarItem>
