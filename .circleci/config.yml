@@ -9,13 +9,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+          - v2-dependencies-{{ checksum "package-lock.json" }}
+          - v2-dependencies- # used if checksum fails
       - run: npm install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
       - run: npm test
       - run: npm run build
   deploy:
@@ -29,13 +29,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+          - v2-dependencies-{{ checksum "package-lock.json" }}
+          - v2-dependencies-
       - run: npm install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
       - run: npm test
       - run: npm run build
       - deploy:
@@ -72,15 +72,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+          - v2-dependencies-{{ checksum "package-lock.json" }}
+          - v2-dependencies-
       - run: npm install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm test
-      - run: npm run build
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Scraping Github data
           command: |
