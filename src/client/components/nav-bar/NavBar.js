@@ -2,32 +2,46 @@ import React from 'react'
 import {  withRouter } from 'react-router-dom'
 import NavBarItem from '~/components/nav-bar/navbar-item/NavBarItem'
 
+import '../../images/logo.svg'
+
 const style = {
   menu: {
     cursor: 'pointer'
+  },
+  dev_do_logo: {
+    color: '#fff',
+    fill: 'currentColor',
+    width: '1.3em',
+    height: '1.3em',
+    verticalAlign: 'middle',
+    overflow: 'hidden',
   }
 }
 
 class NavBar extends React.Component {
 
   componentDidMount() {
-    $(() => {
-      $('.button-collapse').sideNav({
-        closeOnClick: true,
-      })
-    })
+    const sidenav = document.querySelector('.side-nav')
+    M.Sidenav.init(sidenav, {closeOnClick: true})
   }
 
   render() {
     return (
       <nav className="blue darken-1">
         <div className="nav-wrapper container">
-          <span className="brand-logo hide-on-small-only"><i className="material-icons hide-on-med-and-down">code</i>Dominican Open Source</span>
-          <span className="brand-logo hide-on-med-and-up">DO Open Source</span>
+          <span className="brand-logo hide-on-small-only">
+            <svg style={ style.dev_do_logo } aria-hidden="true" focusable="false">
+              <use xlinkHref="#logo_logo"></use>
+					  </svg> Dominican Open Source</span>
+          <span className="brand-logo hide-on-med-and-up">
+            <svg style={ style.dev_do_logo } aria-hidden="true" focusable="false">
+              <use xlinkHref="#logo_logo"></use>
+            </svg>
+          </span>
           <span
-            className="button-collapse hide-on-large-only"
+            className="sidenav-trigger hide-on-large-only"
             style={ style.menu }
-            data-activates="nav-bar-mobile"
+            data-target="nav-bar-mobile"
           ><i className="material-icons">menu</i></span>
           <ul className="right hide-on-med-and-down">
             <NavBarItem to="/repositories">Repositories</NavBarItem>

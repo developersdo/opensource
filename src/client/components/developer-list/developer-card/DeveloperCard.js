@@ -11,6 +11,7 @@ const style = {
   },
   action: {
     display: 'inline-block',
+    textTransform: 'none',
   },
   fact: {
     display: 'block'
