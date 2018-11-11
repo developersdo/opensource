@@ -89,7 +89,7 @@ jobs:
               npm run refresh
 
               git add -A
-              git commit -m "Updated: Github data (automatic): ${CIRCLE_SHA1}" --allow-empty
+              git commit -m "Updated: Github data (automatic): ${CIRCLE_SHA1} [skip ci]" --allow-empty
               git push -q https://${GH_TOKEN}@github.com/developersdo/opensource.git $SOURCE_BRANCH
             fi
 
