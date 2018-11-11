@@ -95,7 +95,47 @@ jobs:
 
 workflows:
   version: 2
-  build_scrape_and_deploy_daily:
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
+  build_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+  build_scrape_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+      - scrape:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - scrape
+          filters:
+            branches:
+              only: master
+  build_scrape_deploy_daily:
     jobs:
       - build
       - scrape:
@@ -111,25 +151,3 @@ workflows:
             branches:
                 only:
                   - master
-  build:
-    jobs:
-      - build:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
-                - master
-  build_and_deploy:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - master
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
