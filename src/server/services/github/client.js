@@ -8,7 +8,7 @@ const networkInterface = createNetworkInterface({
 })
 
 fetch('http://mariuzzo.com')
-  .then(...args => console.log('yay', args))
+  .then((...args) => console.log('yay', args))
 
 networkInterface.use([{
   applyMiddleware(req, next) {
