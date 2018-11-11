@@ -7,6 +7,9 @@ const networkInterface = createNetworkInterface({
   uri: config.get('github.api.uri'),
 })
 
+fetch('http://mariuzzo.com')
+  .then(...args => console.log('yay', args))
+
 networkInterface.use([{
   applyMiddleware(req, next) {
     if (!req.options.headers) {
