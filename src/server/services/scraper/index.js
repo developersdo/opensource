@@ -14,6 +14,7 @@ module.exports = {
       await reposScraper.scrape()
     } catch (error) {
       debug('Cannot scrape completely', error)
+      throw new Error(`Cannot scrape completely: ${error}`)
     }
   }
 }
