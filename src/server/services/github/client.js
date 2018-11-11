@@ -7,8 +7,7 @@ const networkInterface = createNetworkInterface({
   uri: config.get('github.api.uri'),
 })
 
-fetch('http://mariuzzo.com')
-  .then((...args) => console.log('yay', args))
+console.log(config.get('github.api.uri'), config.get('github.api.token') && config.get('github.api.token').length)
 
 networkInterface.use([{
   applyMiddleware(req, next) {
