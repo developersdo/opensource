@@ -44,7 +44,7 @@ module.exports = {
           .then(() => {
 
             // If a next page is available then let's fetch it.
-            const { hasNextPage, endCursor } = response.data.search.pageInfo
+            const { hasNextPage, endCursor } = response.search.pageInfo
             return hasNextPage ? this.scrapeReposFromUsers(users, endCursor) : Promise.resolve()
           })
       })
@@ -56,7 +56,7 @@ module.exports = {
    * @return {Array}
    */
   transform(response) {
-    return response.data.search.nodes.map((node) => ({
+    return response.search.nodes.map((node) => ({
       originalId: node.id,
       name: node.name,
       description: node.description,

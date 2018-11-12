@@ -13,13 +13,12 @@ module.exports = {
    *
    * @return {Promise} A promise.
    */
-  searchUsers(query, after = null) {
+  async searchUsers(query, after = null) {
     debug('Search users:', { query, after })
 
-    return client.query({
-      query: queries.searchUsers,
-      variables: { query, after }
-    }).then(logRateLimit)
+    const results = await client.request(queries.searchUsers, { query, after })
+    logRateLimit(results)
+    return results
   },
 
   /**
@@ -30,26 +29,23 @@ module.exports = {
    *
    * @return {Promise} A promise.
    */
-  searchRepos(query, after = null) {
+  async searchRepos(query, after = null) {
     debug('Search repos:', { query, after })
 
-    return client.query({
-      query: queries.searchRepos,
-      variables: { query, after }
-    }).then(logRateLimit)
-      .then((response) => {
+    const response = await client.request(queries.searchRepos, { query, after })
+    logRateLimit(response)
 
-        // Filter repository nodes by GraphQL typename and by privacy (because we may be using a personal token
-        // which may include private repository). We don't want to leak anything sensitive.
-        response.data.search.nodes = response.data.search.nodes.filter((node) => {
-          return node.__typename === 'Repository' && !node.isPrivate
-        })
-        return response
-      })
+    // Filter repository nodes by GraphQL typename and by privacy (because we may be using a personal token
+    // which may include private repository). We don't want to leak anything sensitive.
+    response.search.nodes = response.search.nodes.filter((node) => {
+      return node.__typename === 'Repository' && !node.isPrivate
+    })
+
+    return response
   }
 }
 
 function logRateLimit(response) {
-  debug('Rate limit:', response.data.rateLimit)
+  debug('Rate limit:', response.rateLimit)
   return response
 }

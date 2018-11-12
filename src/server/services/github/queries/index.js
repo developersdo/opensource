@@ -1,11 +1,9 @@
-const gql = require('graphql-tag')
-
 module.exports = {
 
   /**
    * Graphql query to search users on GitHub API.
    */
-  searchUsers: gql`
+  searchUsers: `
     query searchUsers($query: String!, $after: String) {
       search(type: USER, query: $query, first: 100, after: $after) {
         userCount
@@ -53,7 +51,7 @@ module.exports = {
   /**
    * Graphql query to search repositories on GitHub API.
    */
-  searchRepos: gql`
+  searchRepos: `
     query searchRepos($query: String!, $after: String) {
       search(type: REPOSITORY, query: $query, first: 100, after: $after) {
         repositoryCount
