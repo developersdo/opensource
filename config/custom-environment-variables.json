@@ -1,0 +1,7 @@
+{
+  "github" : {
+    "api": {
+      "token": "GH_API_TOKEN"
+    }
+  }
+}
