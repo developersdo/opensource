@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const generator = require('./../generator')
+const generator = require('../services/generator')
+
 const args = process.argv.slice(2)
 
 if (args.length === 0) {

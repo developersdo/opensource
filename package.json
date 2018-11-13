@@ -46,7 +46,7 @@
     "sequelize": "sequelize",
     "sequelize:debug": "cross-env DEBUG=\"sequelize*\" sequelize",
     "scrape": "./src/server/scripts/scraper.js",
-    "generate-data": "./src/server/services/scripts/generate-data.js",
+    "generate-data": "./src/server/scripts/generate-data.js",
     "refresh": "npm run scrape; npm run generate-data",
     "build": "cross-env NODE_ENV=\"production\" webpack -p --config config/webpack.config.js",
     "serve": "cross-env NODE_ENV=\"development\" webpack-dev-server --config config/webpack.config.js --watch --progress --colors --inline",
