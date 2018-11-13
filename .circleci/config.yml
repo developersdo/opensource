@@ -91,7 +91,7 @@ jobs:
               git add -A
               git commit -m "Updated: Github data (automatic): ${CIRCLE_SHA1} [skip ci]" --allow-empty
               git push -q https://${GH_TOKEN}@github.com/developersdo/opensource.git $SOURCE_BRANCH
-              echo(git show HEAD --summary)
+              echo $(git show HEAD --summary)
             fi
 
 workflows:
