@@ -1,5 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
+const debug = require('debug')('services:generator')
 
 const { User, Repo } = require('../../models')
 
@@ -11,8 +12,10 @@ module.exports = {
    * Generate data.
    */
   async generate() {
+    debug('Generate all data...')
     await this.generateUsers()
     await this.generateRepos()
+    debug('All data generated!')
   },
 
   /**
@@ -20,10 +23,10 @@ module.exports = {
    * @return {Promise}
    */
   async generateUsers() {
-    return await User.findAll()
-      .then((users) => {
-        return fs.writeJSON(path.join(target, 'users.json'), users)
-      })
+    debug('Generating data for users...')
+    const users = await User.findAll()
+    debug('Generating data for %d users.', users.length)
+    return await fs.writeJSON(path.join(target, 'users.json'), users)
   },
 
   /**
@@ -31,9 +34,9 @@ module.exports = {
    * @return {Promise}
    */
   async generateRepos() {
-    return await Repo.findAll()
-      .then((repos) => {
-        return fs.writeJSON(path.join(target, 'repos.json'), repos)
-      })
+    debug('Generating data for repos...')
+    const repos = await Repo.findAll()
+    debug('Generating data for %d repos.', repos.length)
+    return await fs.writeJSON(path.join(target, 'repos.json'), repos)
   }
 }
