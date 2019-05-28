@@ -15,7 +15,7 @@ module.exports = {
 
     return Promise.all(
       repos.map(async (repo) => {
-        const exist = await Repo.find({ where: { originalId: repo.originalId } })
+        const exist = await Repo.findOne({ where: { originalId: repo.originalId } })
         if (exist) {
           return await this.updateRepo(exist.id, repo)
         } else {
@@ -59,7 +59,7 @@ module.exports = {
   async updateRepo(id, repo) {
     debug(`Update repo with id: ${id}...`)
 
-    const original = await Repo.findById(id)
+    const original = await Repo.findByPk(id)
     if (!original) {
       throw new Error('No existing repo.')
     }

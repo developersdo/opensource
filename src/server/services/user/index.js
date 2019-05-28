@@ -16,7 +16,7 @@ module.exports = {
 
     return Promise.all(
       users.map(async (user) => {
-        const exist = await User.find({ where: { originalId: user.originalId } })
+        const exist = await User.findOne({ where: { originalId: user.originalId } })
         if (exist) {
           return await this.updateUser(exist.id, user)
         } else {
@@ -60,7 +60,7 @@ module.exports = {
   async updateUser(id, user) {
     debug(`Update user with id: ${id}...`)
 
-    const original = await User.findById(id)
+    const original = await User.findByPk(id)
     if (!original) {
       throw new Error('No existing user.')
     }
