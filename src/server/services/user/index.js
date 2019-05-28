@@ -1,5 +1,5 @@
 const { pick } = require('lodash')
-const debug = require('debug')('services:user')
+const debug = require('debug')('dos')
 
 const { User, UserChange } = require('../../models')
 

@@ -1,4 +1,4 @@
-const debug = require('debug')('services:scraper:users')
+const debug = require('debug')('dos')
 const config = require('config')
 
 const srv = require('..')
@@ -35,10 +35,10 @@ module.exports = {
    *
    * @return {Promise} A promise.
    */
-  async scrapeUsers(query, after = null) {
+  async scrapeUsers(query, after) {
     debug('Scrape users')
 
-    return await srv.github.searchUsers(query, after)
+    return await srv.github.searchUsers(query, after || undefined)
       .then((response) => {
 
         // Store users.
@@ -49,7 +49,7 @@ module.exports = {
 
             // If a next page is available then let's fetch it.
             const { hasNextPage, endCursor } = response.search.pageInfo
-            return hasNextPage ? this.scrapeUsers(query, endCursor) : Promise.resolve()
+            return hasNextPage ? this.scrapeUsers(query, endCursor || undefined) : Promise.resolve()
           })
       })
   },

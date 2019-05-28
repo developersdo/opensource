@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
-const debug = require('debug')('services:generator')
+const debug = require('debug')('dos')
 
 const { User, Repo } = require('../../models')
 

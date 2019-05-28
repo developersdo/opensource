@@ -1,5 +1,5 @@
 const { pick } = require('lodash')
-const debug = require('debug')('services:repo')
+const debug = require('debug')('dos')
 const { Repo, RepoChange } = require('../../models')
 
 module.exports = {

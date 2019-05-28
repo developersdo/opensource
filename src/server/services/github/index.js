@@ -1,4 +1,4 @@
-const debug = require('debug')('services:github')
+const debug = require('debug')('dos')
 
 const client = require('./client')
 const queries = require('./queries')
@@ -13,10 +13,10 @@ module.exports = {
    *
    * @return {Promise} A promise.
    */
-  async searchUsers(query, after = null) {
+  async searchUsers(query, after) {
     debug('Search users:', { query, after })
 
-    const results = await client.request(queries.searchUsers, { query, after })
+    const results = await client.request(queries.searchUsers, { query, after: after })
     logRateLimit(results)
     return results
   },
