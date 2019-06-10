@@ -9,6 +9,9 @@ const style = {
     verticalAlign: 'middle',
     marginRight: 16,
   },
+  follows: {
+    fontWeight: '600'
+  },
   action: {
     display: 'inline-block',
     textTransform: 'none',
@@ -27,7 +30,7 @@ const style = {
 }
 
 const DeveloperCard = ({user, index}) => (
-  <div className="card hoverable">
+  <div className="card hoverable" title={user.description}>
     <div className="card-content">
       <span style={style.cardNumber}>#{index}</span>
       <OutboundLink
@@ -48,8 +51,7 @@ const DeveloperCard = ({user, index}) => (
           {user.name || user.login}
         </p>
       </OutboundLink>
-      <p className="center-align">Followed by: {user.followers}</p>
-      <p>{user.description}</p>
+      <p className="center-align">Followers <span style={ style.follows }>{user.followers}</span> | Following <span style={ style.follows }>{user.following}</span></p>
     </div>
     <div className="card-action">
       <span style={style.fact}>{user.sources} repositories</span>
