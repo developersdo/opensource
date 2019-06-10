@@ -13,6 +13,10 @@ module.exports = {
             id
             login
             name
+            status {
+              emoji
+              message
+            }
             url: websiteUrl
             avatarUrl
             company
@@ -22,6 +26,12 @@ module.exports = {
               total: totalCount
             }
             following {
+              total: totalCount
+            }
+            sources: repositories {
+              total: totalCount
+            }
+            forked: repositories(isFork: true) {
               total: totalCount
             }
           }

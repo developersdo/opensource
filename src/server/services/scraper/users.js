@@ -40,7 +40,6 @@ module.exports = {
 
     return await srv.github.searchUsers(query, after || undefined)
       .then((response) => {
-
         // Store users.
         const accounts = this.transform(response)
         const users = accounts.filter((account) => account.type === 'User')
@@ -64,6 +63,7 @@ module.exports = {
       originalId: node.id,
       login: node.login,
       name: node.name,
+      description: node.status ? node.status.message : '',
       url: node.url,
       type: node.__typename,
       avatarUrl: node.avatarUrl,

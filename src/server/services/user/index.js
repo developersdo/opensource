@@ -67,7 +67,7 @@ module.exports = {
 
     if (this.isDifferentUser(original, user)) {
       await this.createUserChange(original, user)
-      const updates = pick(user, ['login', 'name', 'type', 'url', 'avatarUrl', 'company', 'location', 'followers', 'following', 'sources', 'forked', 'collaborations'])
+      const updates = pick(user, ['login', 'name', 'description', 'type', 'url', 'avatarUrl', 'company', 'location', 'followers', 'following', 'sources', 'forked', 'collaborations'])
       return await User.update(updates, { where: { originalId: user.originalId } })
     }
 
@@ -80,7 +80,7 @@ module.exports = {
    * @param {Object} b A user.
    */
   isDifferentUser(a, b) {
-    const fields = ['login', 'name', 'type', 'url', 'company', 'location', 'followers', 'following', 'sources', 'forked', 'collaborations']
+    const fields = ['login', 'name', 'description', 'type', 'url', 'company', 'location', 'followers', 'following', 'sources', 'forked', 'collaborations']
     return (!a || !b) || fields.some((field) => a[field] !== b[field])
   },
 
@@ -91,7 +91,7 @@ module.exports = {
    * @return {Promise}
    */
   async createUserChange(original, changed) {
-    const change = pick(changed, ['login', 'name', 'type', 'url', 'avatarUrl', 'company', 'location'])
+    const change = pick(changed, ['login', 'name', 'description', 'type', 'url', 'avatarUrl', 'company', 'location'])
     change.followers = changed.followers - original.followers
     change.following = changed.following - original.following
     change.sources = changed.sources - original.sources
