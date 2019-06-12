@@ -48,6 +48,7 @@ module.exports = {
         repositoryCount
         nodes {
           ... on Repository {
+            __typename
             id
             name: nameWithOwner
             description
