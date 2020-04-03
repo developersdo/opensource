@@ -53,5 +53,22 @@
     "test": "echo \"We should write some tests!\"",
     "debug": "cross-env DEBUG=\"dos*\" npm run"
   },
-  "browserlist": ">1%, last 2 versions"
+  "browserlist": ">1%, last 2 versions",
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 1,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "semi": false
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "rules": {
+      "semi": ["error", "never"],
+      "quotes": ["error", "single"]
+    }
+  }
 }
