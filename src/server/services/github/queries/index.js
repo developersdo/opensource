@@ -1,5 +1,4 @@
 module.exports = {
-
   /**
    * Graphql query to search users on GitHub API.
    */
@@ -48,6 +47,7 @@ module.exports = {
         repositoryCount
         nodes {
           ... on Repository {
+            __typename
             id
             name: nameWithOwner
             description
@@ -83,5 +83,5 @@ module.exports = {
         cost
         resetAt
       }
-    }`
-}
+    }`,
+};
