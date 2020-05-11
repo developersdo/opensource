@@ -26,7 +26,7 @@ const style = {
   }
 }
 
-const DeveloperCard = ({user, index}) => (
+const DeveloperCard = ({ user, index }) => (
   <div className="card hoverable">
     <div className="card-content">
       <span style={style.cardNumber}>#{index}</span>
@@ -39,8 +39,8 @@ const DeveloperCard = ({user, index}) => (
         <p className="center-align">
           <GithubAvatar
             className="circle"
-            style={ style.avatar }
-            user={ user }
+            style={style.avatar}
+            user={user}
             size="64"
           />
         </p>
@@ -50,10 +50,6 @@ const DeveloperCard = ({user, index}) => (
       </OutboundLink>
       <p className="center-align">Followed by: {user.followers}</p>
       <p>{user.description}</p>
-    </div>
-    <div className="card-action">
-      <span style={style.fact}>{user.sources} repositories</span>
-      <span style={style.fact}>{user.forked} forks</span>
     </div>
     <div className="card-action truncate">
       <OutboundLink

@@ -1,9 +1,0 @@
-'use strict'
-
-// This file is used directly by sequelize-cli.
-
-const path = require('path')
-
-module.exports = {
-  url: 'sqlite://' + path.resolve(__dirname, 'data/db.sqlite'),
-}

@@ -1,23 +1,6 @@
 version: 2
 
 jobs:
-  build:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v2-dependencies-{{ checksum "package-lock.json" }}
-          - v2-dependencies- # used if checksum fails
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v2-dependencies-{{ checksum "package-lock.json" }}
-      - run: npm test
-      - run: npm run build
   deploy:
     docker:
       - image: circleci/node:10
@@ -29,8 +12,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "package-lock.json" }}
-          - v2-dependencies-
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+            - v2-dependencies-
       - run: npm install
       - save_cache:
           paths:
@@ -61,43 +44,10 @@ jobs:
               git commit -m "Deployed: website to Github Pages (automatic): ${CIRCLE_SHA1}" --allow-empty
               git push -q https://${GH_TOKEN}@github.com/developersdo/opensource.git $TARGET_BRANCH
             fi
-  scrape:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/repo
-    environment:
-      - SOURCE_BRANCH: master
-      - TARGET_BRANCH: gh-pages
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v2-dependencies-{{ checksum "package-lock.json" }}
-          - v2-dependencies-
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v2-dependencies-{{ checksum "package-lock.json" }}
-      - run:
-          name: Scraping Github data
-          command: |
-            if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
-              git config --global user.email $GH_EMAIL
-              git config --global user.name $GH_NAME
-
-              npm run sequelize -- db:migrate
-              npm run refresh
-
-              git add -A
-              git commit -m "Updated: Github data (automatic): ${CIRCLE_SHA1} [skip ci]" --allow-empty
-              git push -q https://${GH_TOKEN}@github.com/developersdo/opensource.git $SOURCE_BRANCH
-              echo "$(git show --name-only HEAD)"
-            fi
 
 workflows:
   version: 2
-  build:
+  deploy:
     jobs:
       - build:
           filters:
@@ -105,37 +55,3 @@ workflows:
               ignore:
                 - gh-pages
                 - master
-  build_scrape_deploy:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only: master
-      - scrape:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
-      - deploy:
-          requires:
-            - scrape
-          filters:
-            branches:
-              only: master
-  build_scrape_deploy_daily:
-    jobs:
-      - build
-      - scrape:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - scrape
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-                only:
-                  - master

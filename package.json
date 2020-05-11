@@ -34,24 +34,18 @@
     "html-webpack-plugin": "^2.29.0",
     "node-sass": "^4.10.0",
     "sass-loader": "^6.0.7",
-    "sequelize": "^5.8.6",
-    "sequelize-cli": "^5.4.0",
-    "sqlite3": "^4.0.8",
     "style-loader": "0.19",
     "svg-sprite-loader": "^4.1.2",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },
   "scripts": {
-    "sequelize": "sequelize",
-    "sequelize:debug": "cross-env DEBUG=\"sequelize*\" sequelize",
     "scrape": "./src/server/scripts/scraper.js",
     "generate-data": "./src/server/scripts/generate-data.js",
     "refresh": "npm run scrape; npm run generate-data",
     "build": "cross-env NODE_ENV=\"production\" webpack -p --config config/webpack.config.js",
     "serve": "cross-env NODE_ENV=\"development\" webpack-dev-server --config config/webpack.config.js --watch --progress --colors --inline",
-    "test": "echo \"We should write some tests!\"",
-    "debug": "cross-env DEBUG=\"dos*\" npm run"
+    "test": "echo \"We should write some tests!\""
   },
   "browserlist": ">1%, last 2 versions"
 }

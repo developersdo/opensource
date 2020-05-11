@@ -3,10 +3,7 @@ import { merge, find, compact, orderBy } from 'lodash'
 import utils from '~/utils'
 import { languageColor } from '~/utils/colors'
 
-// This is needed because I haven't figured out how to tell webpack-dev-server to
-// serve the `public` directory under `/opensource`. Therefore the data is served
-// at the root. ¯\_(ツ)_/¯
-const baseUrl = process.env.NODE_ENV === 'development' ? '/data' : '/opensource/data'
+const baseUrl = 'https://developersdo.github.io/opensource-data/'
 
 const cache = {
   repos: null,
