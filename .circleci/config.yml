@@ -49,7 +49,7 @@ workflows:
   version: 2
   deploy:
     jobs:
-      - build:
+      - deploy:
           filters:
             branches:
               ignore:
