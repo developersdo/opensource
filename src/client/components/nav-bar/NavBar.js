@@ -23,6 +23,15 @@ class NavBar extends React.Component {
   componentDidMount() {
     const sidenav = document.querySelector('.side-nav')
     M.Sidenav.init(sidenav, {closeOnClick: true})
+   
+    this.initSidenavOverlay()
+  }
+
+  initSidenavOverlay(){
+    const sidenavOverlay = document.querySelector('.sidenav-overlay')
+    sidenavOverlay.setAttribute('id', 'sidenav-overlay')
+    sidenavOverlay.style.opacity = 0
+    sidenavOverlay.style.display = 'none'
   }
 
   render() {
